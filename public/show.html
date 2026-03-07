@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Details — SMVtv</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">SMVtv</a>
+    <a href="index.html">Home</a>
+    <a href="new-releases.html">New Releases</a>
+    <div class="dropdown">
+      <div class="dropbtn">Genre</div>
+      <div class="dropdown-content">
+        <a href="index.html">Action</a>
+        <a href="index.html">Adventure</a>
+        <a href="index.html">Comedy</a>
+        <a href="index.html">Drama</a>
+        <a href="index.html">Fantasy</a>
+        <a href="index.html">Horror</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="dropbtn">Type</div>
+      <div class="dropdown-content">
+        <a href="index.html">Series</a>
+        <a href="index.html">Film</a>
+        <a href="index.html">OVA</a>
+        <a href="index.html">ONA</a>
+        <a href="index.html">Special</a>
+      </div>
+    </div>
+    <a href="about.html">About</a>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+      <span class="toggle-icon moon">🌙</span>
+      <span class="toggle-icon sun">☀️</span>
+    </button>
+  </nav>
+
+  <div id="animeDetails" class="anime-details-container"></div>
+
+  <script>
+    // Theme toggle
+    const html = document.documentElement;
+    const saved = localStorage.getItem('smvtv-theme') || 'dark';
+    html.setAttribute('data-theme', saved);
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('smvtv-theme', next);
+    });
+
+    // Get title from URL (single, clean params block)
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get('title');
+
+    if (title) document.title = title + ' — SMVtv';
+
+    fetch('/api/anime')
+      .then(res => res.json())
+      .then(data => {
+        const anime = data.find(a => a.title.toLowerCase() === (title || '').toLowerCase());
+        const container = document.getElementById('animeDetails');
+
+        if (!anime) {
+          container.innerHTML = '<h2 style="text-align:center;padding:80px;color:var(--text-muted)">Anime not found.</h2>';
+          return;
+        }
+
+        container.innerHTML = `
+          <figure class="anime-figure">
+            <div class="anime-image-container">
+              <img src="${anime.image}" alt="${anime.title}">
+            </div>
+            <figcaption class="anime-info">
+              <h2>${anime.title}</h2>
+              <div class="meta">
+                <span class="rating-badge">⭐ ${anime.rating}</span>
+                <span>${anime.episodes.length} Episodes</span>
+              </div>
+              <p class="description">${anime.description}</p>
+              ${anime.trailer
+                ? `<div class="trailer"><iframe src="${anime.trailer}" frameborder="0" allowfullscreen></iframe></div>`
+                : ''}
+            </figcaption>
+          </figure>
+
+          <div class="episodes-container">
+            <h3>Episodes</h3>
+            <ul>
+              ${anime.episodes.map(ep => `
+                <li>
+                  <a href="watch.html?title=${encodeURIComponent(anime.title)}&ep=${ep.number}">
+                    Ep ${ep.number}${ep.title && ep.title !== 'Episode ' + ep.number ? ': ' + ep.title : ''}
+                  </a>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        `;
+      })
+      .catch(() => {
+        document.getElementById('animeDetails').innerHTML =
+          '<h2 style="text-align:center;padding:80px;color:var(--text-muted)">Failed to load. Is the server running?</h2>';
+      });
+  </script>
+</body>
+</html>

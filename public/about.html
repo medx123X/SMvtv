@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — SMVtv</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">SMVtv</a>
+    <a href="index.html">Home</a>
+    <a href="new-releases.html">New Releases</a>
+    <div class="dropdown">
+      <div class="dropbtn">Genre</div>
+      <div class="dropdown-content">
+        <a href="index.html">Action</a>
+        <a href="index.html">Adventure</a>
+        <a href="index.html">Comedy</a>
+        <a href="index.html">Drama</a>
+        <a href="index.html">Fantasy</a>
+        <a href="index.html">Horror</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="dropbtn">Type</div>
+      <div class="dropdown-content">
+        <a href="index.html">Series</a>
+        <a href="index.html">Film</a>
+        <a href="index.html">OVA</a>
+        <a href="index.html">ONA</a>
+        <a href="index.html">Special</a>
+      </div>
+    </div>
+    <a href="about.html">About</a>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+      <span class="toggle-icon moon">🌙</span>
+      <span class="toggle-icon sun">☀️</span>
+    </button>
+  </nav>
+
+  <section class="about-section">
+    <h1>About <span class="highlight">SMVtv</span></h1>
+    <p>
+      Welcome to <span class="highlight">SMVtv</span>, your ultimate destination for streaming and discovering anime.
+      Here, we aim to provide fans with an organized collection of anime episodes, latest releases, and detailed
+      information about your favorite series and movies.
+    </p>
+    <p>
+      Our goal is to create a simple and enjoyable experience for anime lovers, whether you're a newcomer
+      exploring popular titles or a long-time fan revisiting classics.
+    </p>
+
+    <div class="team">
+      <h2>Our Team</h2>
+      <div class="team-members">
+        <div class="member">
+          <h3>Mohammed Ahmed</h3>
+          <p>Founder</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const html = document.documentElement;
+    html.setAttribute('data-theme', localStorage.getItem('smvtv-theme') || 'dark');
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('smvtv-theme', next);
+    });
+  </script>
+</body>
+</html>

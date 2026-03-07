@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMVtv — Anime Streaming</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">SMVtv</a>
+    <a href="index.html">Home</a>
+    <a href="new-releases.html">New Releases</a>
+    <div class="dropdown">
+      <div class="dropbtn">Genre</div>
+      <div class="dropdown-content">
+        <a href="#" data-filter="genre" data-value="Action">Action</a>
+        <a href="#" data-filter="genre" data-value="Adventure">Adventure</a>
+        <a href="#" data-filter="genre" data-value="Comedy">Comedy</a>
+        <a href="#" data-filter="genre" data-value="Drama">Drama</a>
+        <a href="#" data-filter="genre" data-value="Fantasy">Fantasy</a>
+        <a href="#" data-filter="genre" data-value="Horror">Horror</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="dropbtn">Type</div>
+      <div class="dropdown-content">
+        <a href="#" data-filter="type" data-value="Series">Series</a>
+        <a href="#" data-filter="type" data-value="Film">Film</a>
+        <a href="#" data-filter="type" data-value="OVA">OVA</a>
+        <a href="#" data-filter="type" data-value="ONA">ONA</a>
+        <a href="#" data-filter="type" data-value="Special">Special</a>
+      </div>
+    </div>
+    <a href="about.html">About</a>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+      <span class="toggle-icon moon">🌙</span>
+      <span class="toggle-icon sun">☀️</span>
+    </button>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <section class="hero" id="heroBanner">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content" id="heroContent">
+      <span class="hero-badge">Featured</span>
+      <h1 class="hero-title" id="heroTitle">Loading...</h1>
+      <div class="hero-meta">
+        <span class="hero-rating" id="heroRating">⭐ —</span>
+        <span id="heroType">Series</span>
+      </div>
+      <p class="hero-description" id="heroDesc"></p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary" id="heroWatch">▶ Watch Now</a>
+        <a href="#" class="btn-secondary" id="heroInfo">More Info</a>
+      </div>
+    </div>
+    <div class="hero-dots" id="heroDots"></div>
+  </section>
+
+  <!-- SEARCH -->
+  <section class="search-section">
+    <h1>Find Your Favorite Anime On<span> SMVtv</span></h1>
+    <div class="search-results-wrapper">
+      <div class="search-bar">
+        <input type="search" id="searchInput" placeholder="Search anime by title..." autocomplete="off">
+        <button id="searchBtn">Search</button>
+      </div>
+      <div class="search-results" id="searchResults" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- FILTER CHIPS -->
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-chip active" data-genre="all">All</button>
+    <button class="filter-chip" data-genre="Action">Action</button>
+    <button class="filter-chip" data-genre="Adventure">Adventure</button>
+    <button class="filter-chip" data-genre="Comedy">Comedy</button>
+    <button class="filter-chip" data-genre="Drama">Drama</button>
+    <button class="filter-chip" data-genre="Fantasy">Fantasy</button>
+    <button class="filter-chip" data-genre="Horror">Horror</button>
+  </div>
+
+  <!-- ANIME GRID -->
+  <section class="anime-section">
+    <div class="section-header">
+      <h2>Popular Anime</h2>
+      <a href="new-releases.html">View All →</a>
+    </div>
+    <div class="anime-grid" id="animeContainer"></div>
+    <p class="no-results" id="noResults">No anime found matching your search.</p>
+  </section>
+
+  <script>
+    // ─── Theme Toggle ───────────────────────────────────────────────
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('smvtv-theme') || 'dark';
+    html.setAttribute('data-theme', saved);
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('smvtv-theme', next);
+    });
+
+    // ─── Data & State ───────────────────────────────────────────────
+    let allAnime = [];
+    let heroIndex = 0;
+    let heroInterval;
+
+    // ─── Hero Banner ────────────────────────────────────────────────
+    const FEATURED_COUNT = 5;
+
+    function setHero(anime, index) {
+      heroIndex = index;
+      document.getElementById('heroBg').style.backgroundImage = `url('${anime.image}')`;
+      document.getElementById('heroTitle').textContent = anime.title;
+      document.getElementById('heroRating').textContent = `⭐ ${anime.rating}`;
+      document.getElementById('heroDesc').textContent = anime.description;
+      document.getElementById('heroWatch').href = `watch.html?title=${encodeURIComponent(anime.title)}&ep=1`;
+      document.getElementById('heroInfo').href = `show.html?title=${encodeURIComponent(anime.title)}`;
+
+      // Update dots
+      document.querySelectorAll('.hero-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === index);
+      });
+    }
+
+    function buildHeroDots(featured) {
+      const dotsEl = document.getElementById('heroDots');
+      dotsEl.innerHTML = '';
+      featured.forEach((anime, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'hero-dot' + (i === 0 ? ' active' : '');
+        btn.addEventListener('click', () => {
+          clearInterval(heroInterval);
+          setHero(featured[i], i);
+          startHeroRotation(featured);
+        });
+        dotsEl.appendChild(btn);
+      });
+    }
+
+    function startHeroRotation(featured) {
+      heroInterval = setInterval(() => {
+        heroIndex = (heroIndex + 1) % featured.length;
+        setHero(featured[heroIndex], heroIndex);
+      }, 6000);
+    }
+
+    function initHero(data) {
+      const featured = data.slice(0, FEATURED_COUNT);
+      buildHeroDots(featured);
+      setHero(featured[0], 0);
+      startHeroRotation(featured);
+    }
+
+    // ─── Render Cards ────────────────────────────────────────────────
+    function renderCards(list) {
+      const container = document.getElementById('animeContainer');
+      const noResults = document.getElementById('noResults');
+
+      if (list.length === 0) {
+        container.innerHTML = '';
+        noResults.style.display = 'block';
+        return;
+      }
+
+      noResults.style.display = 'none';
+      container.innerHTML = list.map(anime => `
+        <div class="anime-card">
+          <div class="card-img-wrap">
+            <img src="${anime.image}" alt="${anime.title}" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>${anime.title}</h3>
+            <div class="card-rating">⭐ ${anime.rating}</div>
+            <a href="show.html?title=${encodeURIComponent(anime.title)}" class="more-info">More Info</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ─── Skeleton Loaders ────────────────────────────────────────────
+    function showSkeletons() {
+      const container = document.getElementById('animeContainer');
+      container.innerHTML = Array(8).fill(`
+        <div class="skeleton-card">
+          <div class="skeleton skeleton-img"></div>
+          <div class="skeleton skeleton-text"></div>
+          <div class="skeleton skeleton-btn"></div>
+        </div>
+      `).join('');
+    }
+
+    // ─── Search ──────────────────────────────────────────────────────
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      if (!q) { searchResults.style.display = 'none'; return; }
+
+      const matches = allAnime.filter(a => a.title.toLowerCase().includes(q)).slice(0, 6);
+
+      if (matches.length === 0) {
+        searchResults.style.display = 'none';
+        return;
+      }
+
+      searchResults.innerHTML = matches.map(a => `
+        <a href="show.html?title=${encodeURIComponent(a.title)}" class="search-result-item">
+          <img src="${a.image}" alt="${a.title}">
+          <span>${a.title}</span>
+        </a>
+      `).join('');
+      searchResults.style.display = 'block';
+    });
+
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      if (!q) { renderCards(allAnime); return; }
+      const filtered = allAnime.filter(a => a.title.toLowerCase().includes(q));
+      renderCards(filtered);
+      searchResults.style.display = 'none';
+    });
+
+    searchInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('searchBtn').click();
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.search-results-wrapper')) {
+        searchResults.style.display = 'none';
+      }
+    });
+
+    // ─── Genre Filter Chips ──────────────────────────────────────────
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const genre = chip.dataset.genre;
+        if (genre === 'all') { renderCards(allAnime); return; }
+        // Filter by genre tag if present, else match in title/description as fallback
+        const filtered = allAnime.filter(a =>
+          (a.genres && a.genres.includes(genre)) ||
+          (a.description && a.description.toLowerCase().includes(genre.toLowerCase()))
+        );
+        renderCards(filtered.length ? filtered : allAnime);
+      });
+    });
+
+    // ─── Dropdown nav filters ────────────────────────────────────────
+    document.querySelectorAll('[data-filter]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const value = link.dataset.value.toLowerCase();
+        const filtered = allAnime.filter(a =>
+          (a.description && a.description.toLowerCase().includes(value)) ||
+          (a.genres && a.genres.map(g => g.toLowerCase()).includes(value)) ||
+          (a.type && a.type.toLowerCase() === value)
+        );
+        renderCards(filtered.length ? filtered : allAnime);
+        window.scrollTo({ top: document.querySelector('.anime-section').offsetTop - 80, behavior: 'smooth' });
+      });
+    });
+
+    // ─── Fetch & Init ────────────────────────────────────────────────
+    showSkeletons();
+
+    fetch('/api/anime')
+      .then(res => res.json())
+      .then(data => {
+        allAnime = data;
+        initHero(data);
+        renderCards(data);
+      })
+      .catch(err => {
+        console.error('Error:', err);
+        document.getElementById('animeContainer').innerHTML =
+          '<p style="color:var(--text-muted);text-align:center;padding:40px;grid-column:1/-1">Failed to load anime. Make sure the server is running.</p>';
+      });
+  </script>
+</body>
+</html>

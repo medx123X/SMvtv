@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch — SMVtv</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">SMVtv</a>
+    <a href="index.html">Home</a>
+    <a href="new-releases.html">New Releases</a>
+    <div class="dropdown">
+      <div class="dropbtn">Genre</div>
+      <div class="dropdown-content">
+        <a href="index.html">Action</a>
+        <a href="index.html">Adventure</a>
+        <a href="index.html">Comedy</a>
+        <a href="index.html">Drama</a>
+        <a href="index.html">Fantasy</a>
+        <a href="index.html">Horror</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="dropbtn">Type</div>
+      <div class="dropdown-content">
+        <a href="index.html">Series</a>
+        <a href="index.html">Film</a>
+        <a href="index.html">OVA</a>
+        <a href="index.html">ONA</a>
+        <a href="index.html">Special</a>
+      </div>
+    </div>
+    <a href="about.html">About</a>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+      <span class="toggle-icon moon">🌙</span>
+      <span class="toggle-icon sun">☀️</span>
+    </button>
+  </nav>
+
+  <div class="watch-layout">
+    <!-- Video -->
+    <div class="video-side">
+      <h2 id="playerTitle">Loading...</h2>
+      <iframe id="player" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- Episode list -->
+    <div class="episode-side">
+      <h3>Episodes</h3>
+      <ul id="episodeList"></ul>
+    </div>
+  </div>
+
+  <script>
+    // Theme
+    const html = document.documentElement;
+    const saved = localStorage.getItem('smvtv-theme') || 'dark';
+    html.setAttribute('data-theme', saved);
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('smvtv-theme', next);
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get('title');
+    const epNumber = parseInt(params.get('ep'));
+
+    if (!title || isNaN(epNumber)) {
+      document.body.innerHTML += '<h2 style="text-align:center;padding:80px;color:var(--text-muted)">Missing title or episode in URL.</h2>';
+    }
+
+    fetch('/api/anime')
+      .then(res => res.json())
+      .then(data => {
+        const anime = data.find(a => a.title.toLowerCase() === title.toLowerCase());
+        if (!anime) { document.getElementById('playerTitle').textContent = 'Anime not found'; return; }
+
+        const episode = anime.episodes.find(e => e.number === epNumber);
+        if (!episode) { document.getElementById('playerTitle').textContent = 'Episode not found'; return; }
+
+        document.title = `${anime.title} — Ep ${epNumber} | SMVtv`;
+        document.getElementById('playerTitle').textContent = `${anime.title} — Episode ${epNumber}`;
+        document.getElementById('player').src = episode.video;
+
+        const list = document.getElementById('episodeList');
+        anime.episodes.forEach(ep => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = `watch.html?title=${encodeURIComponent(anime.title)}&ep=${ep.number}`;
+          a.textContent = `Episode ${ep.number}`;
+          if (ep.number === epNumber) a.classList.add('active-ep');
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+      })
+      .catch(() => {
+        document.getElementById('playerTitle').textContent = 'Failed to load. Is the server running?';
+      });
+  </script>
+</body>
+</html>
