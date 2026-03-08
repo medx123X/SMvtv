@@ -146,6 +146,12 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Drama",
+      "Fantasy",
+      "Horror"
     ]
   },
   {
@@ -295,6 +301,11 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Adventure"
     ]
   },
   {
@@ -444,11 +455,16 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Horror"
     ]
   },
   {
     "title": "Black Clover",
-    "image": "https://www.gamereactor.me/media/89/blackclover_4598943b.jpg",
+    "image": "/assets/images/bc.JPEG",
     "rating": 9.0,
     "description": "Asta and Yuno were abandoned together at the same church and have been inseparable since. As children, they promised that they would compete against each other to see who would become the next Emperor Magus.",
     "trailer": "https://www.youtube.com/embed/xGRm5UC4x1c",
@@ -593,6 +609,12 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Adventure",
+      "Comedy"
     ]
   },
   {
@@ -742,6 +764,12 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Adventure",
+      "Comedy"
     ]
   },
   {
@@ -891,6 +919,11 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Adventure"
     ]
   },
   {
@@ -1040,6 +1073,12 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy"
     ]
   },
   {
@@ -1189,6 +1228,11 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Horror",
+      "Fantasy"
     ]
   },
   {
@@ -1338,6 +1382,10 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Drama",
+      "Mystery"
     ]
   },
   {
@@ -1487,6 +1535,11 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
     ]
   },
   {
@@ -1636,6 +1689,11 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
     ]
   },
   {
@@ -1785,6 +1843,10 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Drama",
+      "Romance"
     ]
   },
   {
@@ -1934,6 +1996,11 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Thriller"
     ]
   },
   {
@@ -2083,6 +2150,10 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Drama",
+      "Romance"
     ]
   },
   {
@@ -2232,6 +2303,10 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Drama",
+      "Mystery"
     ]
   },
   {
@@ -2381,6 +2456,11 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
     ]
   },
   {
@@ -2530,6 +2610,11 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
     ]
   },
   {
@@ -2679,6 +2764,12 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Drama",
+      "Fantasy",
+      "Mystery"
     ]
   },
   {
@@ -2828,6 +2919,11 @@
         "title": "Episode 28",
         "video": ""
       }
+    ],
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
     ]
   }
 ]
