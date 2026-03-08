@@ -6,6 +6,46 @@
   <title>Anime Details — SMVtv</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .season-selector {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .season-selector label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .season-dropdown {
+      padding: 9px 16px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+      min-width: 180px;
+    }
+
+    .season-dropdown:focus,
+    .season-dropdown:hover {
+      border-color: var(--accent);
+    }
+
+    .season-dropdown option {
+      background: var(--bg-card);
+      color: var(--text-primary);
+    }
+  </style>
 </head>
 <body>
 
@@ -54,11 +94,79 @@
       localStorage.setItem('smvtv-theme', next);
     });
 
-    // Get title from URL (single, clean params block)
     const params = new URLSearchParams(window.location.search);
     const title = params.get('title');
-
     if (title) document.title = title + ' — SMVtv';
+
+    let currentAnime = null;
+
+    function renderEpisodes(episodes, seasonNum) {
+      const container = document.getElementById('episodesContainer');
+      container.innerHTML = episodes.map(ep => `
+        <li>
+          <a href="watch.html?title=${encodeURIComponent(currentAnime.title)}&season=${seasonNum}&ep=${ep.number}">
+            Ep ${ep.number}
+          </a>
+        </li>
+      `).join('');
+    }
+
+    function renderAnime(anime) {
+      currentAnime = anime;
+      const hasSeasons = anime.seasons && anime.seasons.length > 1;
+      const container = document.getElementById('animeDetails');
+
+      const seasonSelectorHTML = hasSeasons ? `
+        <div class="season-selector">
+          <label>Season:</label>
+          <select class="season-dropdown" id="seasonDropdown">
+            ${anime.seasons.map(s => `
+              <option value="${s.season}">Season ${s.season} (${s.episodes.length} episodes)</option>
+            `).join('')}
+          </select>
+        </div>
+      ` : '';
+
+      const initialEpisodes = hasSeasons ? anime.seasons[0].episodes : anime.episodes;
+      const initialSeason = hasSeasons ? anime.seasons[0].season : 1;
+
+      container.innerHTML = `
+        <figure class="anime-figure">
+          <div class="anime-image-container">
+            <img src="${anime.image}" alt="${anime.title}">
+          </div>
+          <figcaption class="anime-info">
+            <h2>${anime.title}</h2>
+            <div class="meta">
+              <span class="rating-badge">⭐ ${anime.rating}</span>
+              ${hasSeasons
+                ? `<span>${anime.seasons.length} Seasons</span>`
+                : `<span>${anime.episodes.length} Episodes</span>`}
+            </div>
+            <p class="description">${anime.description}</p>
+            ${anime.trailer
+              ? `<div class="trailer"><iframe src="${anime.trailer}" frameborder="0" allowfullscreen></iframe></div>`
+              : ''}
+          </figcaption>
+        </figure>
+
+        <div class="episodes-container">
+          <h3>Episodes</h3>
+          ${seasonSelectorHTML}
+          <ul id="episodesContainer"></ul>
+        </div>
+      `;
+
+      renderEpisodes(initialEpisodes, initialSeason);
+
+      if (hasSeasons) {
+        document.getElementById('seasonDropdown').addEventListener('change', function () {
+          const selectedSeason = parseInt(this.value);
+          const seasonData = anime.seasons.find(s => s.season === selectedSeason);
+          if (seasonData) renderEpisodes(seasonData.episodes, selectedSeason);
+        });
+      }
+    }
 
     fetch('/api/anime')
       .then(res => res.json())
@@ -71,37 +179,7 @@
           return;
         }
 
-        container.innerHTML = `
-          <figure class="anime-figure">
-            <div class="anime-image-container">
-              <img src="${anime.image}" alt="${anime.title}">
-            </div>
-            <figcaption class="anime-info">
-              <h2>${anime.title}</h2>
-              <div class="meta">
-                <span class="rating-badge">⭐ ${anime.rating}</span>
-                <span>${anime.episodes.length} Episodes</span>
-              </div>
-              <p class="description">${anime.description}</p>
-              ${anime.trailer
-                ? `<div class="trailer"><iframe src="${anime.trailer}" frameborder="0" allowfullscreen></iframe></div>`
-                : ''}
-            </figcaption>
-          </figure>
-
-          <div class="episodes-container">
-            <h3>Episodes</h3>
-            <ul>
-              ${anime.episodes.map(ep => `
-                <li>
-                  <a href="watch.html?title=${encodeURIComponent(anime.title)}&ep=${ep.number}">
-                    Ep ${ep.number}${ep.title && ep.title !== 'Episode ' + ep.number ? ': ' + ep.title : ''}
-                  </a>
-                </li>
-              `).join('')}
-            </ul>
-          </div>
-        `;
+        renderAnime(anime);
       })
       .catch(() => {
         document.getElementById('animeDetails').innerHTML =

@@ -6,6 +6,45 @@
   <title>Watch — SMVtv</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .episode-side-header {
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .episode-side-header h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .season-select-watch {
+      width: 100%;
+      padding: 8px 12px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .season-select-watch:hover,
+    .season-select-watch:focus {
+      border-color: var(--accent);
+    }
+
+    .season-select-watch option {
+      background: var(--bg-card);
+    }
+  </style>
 </head>
 <body>
 
@@ -42,15 +81,16 @@
   </nav>
 
   <div class="watch-layout">
-    <!-- Video -->
     <div class="video-side">
       <h2 id="playerTitle">Loading...</h2>
       <iframe id="player" src="" frameborder="0" allowfullscreen></iframe>
     </div>
 
-    <!-- Episode list -->
     <div class="episode-side">
-      <h3>Episodes</h3>
+      <div class="episode-side-header">
+        <h3>Episodes</h3>
+        <select class="season-select-watch" id="seasonSelect" style="display:none;"></select>
+      </div>
       <ul id="episodeList"></ul>
     </div>
   </div>
@@ -69,34 +109,77 @@
     const params = new URLSearchParams(window.location.search);
     const title = params.get('title');
     const epNumber = parseInt(params.get('ep'));
+    const seasonNumber = parseInt(params.get('season')) || 1;
 
-    if (!title || isNaN(epNumber)) {
-      document.body.innerHTML += '<h2 style="text-align:center;padding:80px;color:var(--text-muted)">Missing title or episode in URL.</h2>';
+    function renderEpisodeList(episodes, seasonNum) {
+      const list = document.getElementById('episodeList');
+      list.innerHTML = '';
+      episodes.forEach(ep => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `watch.html?title=${encodeURIComponent(title)}&season=${seasonNum}&ep=${ep.number}`;
+        a.textContent = `Episode ${ep.number}`;
+        if (ep.number === epNumber && seasonNum === seasonNumber) {
+          a.classList.add('active-ep');
+        }
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+
+      // Scroll active episode into view
+      setTimeout(() => {
+        const activeEp = document.querySelector('.active-ep');
+        if (activeEp) activeEp.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      }, 100);
     }
 
     fetch('/api/anime')
       .then(res => res.json())
       .then(data => {
         const anime = data.find(a => a.title.toLowerCase() === title.toLowerCase());
-        if (!anime) { document.getElementById('playerTitle').textContent = 'Anime not found'; return; }
+        if (!anime) {
+          document.getElementById('playerTitle').textContent = 'Anime not found';
+          return;
+        }
 
-        const episode = anime.episodes.find(e => e.number === epNumber);
-        if (!episode) { document.getElementById('playerTitle').textContent = 'Episode not found'; return; }
+        const hasSeasons = anime.seasons && anime.seasons.length > 1;
+        let episodes, episode;
 
-        document.title = `${anime.title} — Ep ${epNumber} | SMVtv`;
-        document.getElementById('playerTitle').textContent = `${anime.title} — Episode ${epNumber}`;
+        if (hasSeasons) {
+          const seasonData = anime.seasons.find(s => s.season === seasonNumber) || anime.seasons[0];
+          episodes = seasonData.episodes;
+          episode = episodes.find(e => e.number === epNumber);
+
+          // Build season dropdown
+          const seasonSelect = document.getElementById('seasonSelect');
+          seasonSelect.style.display = 'block';
+          seasonSelect.innerHTML = anime.seasons.map(s =>
+            `<option value="${s.season}" ${s.season === seasonNumber ? 'selected' : ''}>
+              Season ${s.season} (${s.episodes.length} eps)
+            </option>`
+          ).join('');
+
+          seasonSelect.addEventListener('change', function () {
+            const newSeason = parseInt(this.value);
+            window.location.href = `watch.html?title=${encodeURIComponent(title)}&season=${newSeason}&ep=1`;
+          });
+        } else {
+          episodes = anime.episodes;
+          episode = episodes.find(e => e.number === epNumber);
+        }
+
+        if (!episode) {
+          document.getElementById('playerTitle').textContent = 'Episode not found';
+          return;
+        }
+
+        const seasonLabel = hasSeasons ? ` S${seasonNumber}` : '';
+        document.title = `${anime.title}${seasonLabel} — Ep ${epNumber} | SMVtv`;
+        document.getElementById('playerTitle').textContent =
+          `${anime.title}${seasonLabel} — Episode ${epNumber}`;
         document.getElementById('player').src = episode.video;
 
-        const list = document.getElementById('episodeList');
-        anime.episodes.forEach(ep => {
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = `watch.html?title=${encodeURIComponent(anime.title)}&ep=${ep.number}`;
-          a.textContent = `Episode ${ep.number}`;
-          if (ep.number === epNumber) a.classList.add('active-ep');
-          li.appendChild(a);
-          list.appendChild(li);
-        });
+        renderEpisodeList(episodes, seasonNumber);
       })
       .catch(() => {
         document.getElementById('playerTitle').textContent = 'Failed to load. Is the server running?';
