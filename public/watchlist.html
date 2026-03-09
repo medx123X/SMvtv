@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Watchlist — SMVtv</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .watchlist-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .watchlist-header {
+      margin-bottom: 32px;
+    }
+
+    .watchlist-header h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 42px;
+      letter-spacing: 2px;
+      color: var(--text-primary);
+    }
+
+    .watchlist-header h1 span {
+      color: var(--accent);
+    }
+
+    .watchlist-count {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .watchlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .watchlist-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+      position: relative;
+    }
+
+    .watchlist-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .watchlist-card img {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .watchlist-card-body {
+      padding: 12px;
+    }
+
+    .watchlist-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .watchlist-card-rating {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .watchlist-card-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-info {
+      flex: 1;
+      padding: 7px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-secondary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-info:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-remove {
+      padding: 7px 10px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-muted);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-remove:hover {
+      border-color: #e63946;
+      color: #e63946;
+      background: rgba(230,57,70,0.1);
+    }
+
+    .empty-watchlist {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-watchlist .empty-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+
+    .empty-watchlist h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .empty-watchlist p {
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .empty-watchlist a {
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: opacity 0.2s;
+    }
+
+    .empty-watchlist a:hover { opacity: 0.85; }
+
+    .not-logged-in {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .not-logged-in h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 32px;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .not-logged-in p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .not-logged-in a {
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      z-index: 9999;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">SMVtv</a>
+    <a href="index.html">Home</a>
+    <a href="new-releases.html">New Releases</a>
+    <a href="watchlist.html" style="color:var(--accent)">My List</a>
+    <a href="about.html">About</a>
+    <div id="authNav"></div>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+      <span class="toggle-icon moon">🌙</span>
+      <span class="toggle-icon sun">☀️</span>
+    </button>
+  </nav>
+
+  <div class="watchlist-page">
+    <div id="watchlistContent"></div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // Theme
+    const html = document.documentElement;
+    html.setAttribute('data-theme', localStorage.getItem('smvtv-theme') || 'dark');
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('smvtv-theme', next);
+    });
+
+    // Auth nav
+    const username = localStorage.getItem('smvtv-username');
+    const authNav = document.getElementById('authNav');
+    if (username) {
+      authNav.innerHTML = `
+        <div class="user-menu" style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:14px;font-weight:600;color:var(--text-primary)">👤 ${username}</span>
+          <button onclick="logout()" style="padding:6px 14px;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--text-secondary);font-family:'Outfit',sans-serif;font-size:13px;cursor:pointer;">Logout</button>
+        </div>`;
+    } else {
+      authNav.innerHTML = `<a href="login.html" style="padding:7px 18px;background:var(--accent);border-radius:6px;color:#fff;font-size:13px;font-weight:600;text-decoration:none;">Sign In</a>`;
+    }
+
+    function logout() {
+      localStorage.removeItem('smvtv-token');
+      localStorage.removeItem('smvtv-username');
+      window.location.href = 'index.html';
+    }
+
+    function showToast(msg, color) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.style.borderColor = color || 'var(--border)';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    const token = localStorage.getItem('smvtv-token');
+    const container = document.getElementById('watchlistContent');
+
+    if (!token) {
+      container.innerHTML = `
+        <div class="not-logged-in">
+          <h2>Sign in to view your watchlist</h2>
+          <p>Create a free account to save anime to your list.</p>
+          <a href="login.html">Sign In</a>
+        </div>`;
+    } else {
+      loadWatchlist();
+    }
+
+    async function loadWatchlist() {
+      try {
+        // Get watchlist titles
+        const wRes = await fetch('/api/watchlist', {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        const wData = await wRes.json();
+        const watchlist = wData.watchlist || [];
+
+        // Get all anime to match titles with full data
+        const aRes = await fetch('/api/anime');
+        const allAnime = await aRes.json();
+
+        const watchedAnime = allAnime.filter(a => watchlist.includes(a.title));
+
+        if (watchedAnime.length === 0) {
+          container.innerHTML = `
+            <div class="empty-watchlist">
+              <div class="empty-icon">🎬</div>
+              <h2>Your list is empty</h2>
+              <p>Start adding anime you want to watch!</p>
+              <a href="index.html">Browse Anime</a>
+            </div>`;
+          return;
+        }
+
+        container.innerHTML = `
+          <div class="watchlist-header">
+            <h1>My <span>Watchlist</span></h1>
+            <p class="watchlist-count">${watchedAnime.length} anime saved</p>
+          </div>
+          <div class="watchlist-grid" id="watchlistGrid"></div>
+        `;
+
+        renderWatchlistCards(watchedAnime);
+      } catch (err) {
+        container.innerHTML = '<p style="text-align:center;padding:60px;color:var(--text-muted)">Failed to load watchlist.</p>';
+      }
+    }
+
+    function renderWatchlistCards(list) {
+      const grid = document.getElementById('watchlistGrid');
+      grid.innerHTML = list.map(anime => `
+        <div class="watchlist-card" id="card-${encodeURIComponent(anime.title)}">
+          <img src="${anime.image}" alt="${anime.title}">
+          <div class="watchlist-card-body">
+            <div class="watchlist-card-title">${anime.title}</div>
+            <div class="watchlist-card-rating">⭐ ${anime.rating}</div>
+            <div class="watchlist-card-actions">
+              <a href="show.html?title=${encodeURIComponent(anime.title)}" class="btn-info">More Info</a>
+              <button class="btn-remove" onclick="removeFromWatchlist('${anime.title.replace(/'/g, "\\'")}')" title="Remove">🗑</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function removeFromWatchlist(title) {
+      try {
+        const res = await fetch('/api/watchlist', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify({ title })
+        });
+
+        if (res.ok) {
+          const card = document.getElementById('card-' + encodeURIComponent(title));
+          if (card) card.remove();
+          showToast('✅ Removed from watchlist', '#22c55e');
+
+          // Check if grid is empty
+          const grid = document.getElementById('watchlistGrid');
+          if (grid && grid.children.length === 0) {
+            container.innerHTML = `
+              <div class="empty-watchlist">
+                <div class="empty-icon">🎬</div>
+                <h2>Your list is empty</h2>
+                <p>Start adding anime you want to watch!</p>
+                <a href="index.html">Browse Anime</a>
+              </div>`;
+          } else {
+            // Update count
+            const countEl = document.querySelector('.watchlist-count');
+            if (countEl) {
+              const remaining = grid ? grid.children.length : 0;
+              countEl.textContent = `${remaining} anime saved`;
+            }
+          }
+        }
+      } catch (err) {
+        showToast('❌ Failed to remove', '#e63946');
+      }
+    }
+  </script>
+</body>
+</html>

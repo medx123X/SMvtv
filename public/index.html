@@ -7,47 +7,67 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .user-menu {
+    .user-menu { display:flex; align-items:center; gap:10px; }
+    .user-greeting { font-size:14px; font-weight:600; color:var(--text-primary); }
+    .logout-btn {
+      padding:6px 14px; background:transparent; border:1px solid var(--border);
+      border-radius:6px; color:var(--text-secondary); font-family:'Outfit',sans-serif;
+      font-size:13px; cursor:pointer; transition:all 0.2s;
+    }
+    .logout-btn:hover { border-color:var(--accent); color:var(--accent); }
+    .login-link {
+      padding:7px 18px; background:var(--accent); border-radius:6px;
+      color:#fff !important; font-size:13px; font-weight:600;
+      text-decoration:none; transition:opacity 0.2s;
+    }
+    .login-link:hover { opacity:0.85; }
+
+    /* Card body row: title+rating on left, heart on right */
+    .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+    .card-body-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .card-body-info { flex: 1; min-width: 0; }
+    .heart-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+      padding: 2px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      transition: transform 0.2s;
     }
-    .user-greeting {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-primary);
+    .heart-btn:hover { transform: scale(1.15); }
+    .heart-btn svg { display: block; pointer-events: none; }
+    .heart-btn .heart-outline { fill: none; stroke: #111; stroke-width: 2; transition: fill 0.2s, stroke 0.2s; }
+    [data-theme="light"] .heart-btn .heart-outline { stroke: #333; }
+    .heart-btn:hover .heart-outline { stroke: #8b0000; fill: rgba(139,0,0,0.1); }
+    .heart-btn.saved .heart-outline { fill: #8b0000; stroke: #8b0000; }
+
+    /* Toast */
+    .toast {
+      position:fixed; bottom:30px; left:50%;
+      transform:translateX(-50%) translateY(100px);
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:10px; padding:12px 24px;
+      font-size:14px; font-weight:600; color:var(--text-primary);
+      box-shadow:0 8px 32px rgba(0,0,0,0.3);
+      transition:transform 0.3s ease; z-index:9999;
     }
-    .logout-btn {
-      padding: 6px 14px;
-      background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text-secondary);
-      font-family: 'Outfit', sans-serif;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .logout-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .login-link {
-      padding: 7px 18px;
-      background: var(--accent);
-      border-radius: 6px;
-      color: #fff !important;
-      font-size: 13px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .login-link:hover { opacity: 0.85; }
+    .toast.show { transform:translateX(-50%) translateY(0); }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <a href="index.html" class="logo">SMVtv</a>
     <a href="index.html">Home</a>
@@ -73,6 +93,7 @@
         <a href="#" data-filter="type" data-value="Special">Special</a>
       </div>
     </div>
+    <a href="watchlist.html">My List</a>
     <a href="about.html">About</a>
     <div id="authNav"></div>
     <button class="theme-toggle" id="themeToggle" title="Toggle theme">
@@ -134,21 +155,29 @@
     <p class="no-results" id="noResults">No anime found matching your search.</p>
   </section>
 
-  <script>
-    // ─── Theme Toggle ───────────────────────────────────────────────
-    const html = document.documentElement;
-    const themeToggle = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('smvtv-theme') || 'dark';
-    html.setAttribute('data-theme', saved);
+  <!-- Watchlist Section -->
+  <section class="anime-section" id="watchlistSection" style="display:none;">
+    <div class="section-header">
+      <h2>My List</h2>
+      <a href="watchlist.html">View All →</a>
+    </div>
+    <div class="anime-grid" id="watchlistContainer"></div>
+  </section>
 
-    themeToggle.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ─── Theme ──────────────────────────────────────────────────────
+    const html = document.documentElement;
+    html.setAttribute('data-theme', localStorage.getItem('smvtv-theme') || 'dark');
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', next);
       localStorage.setItem('smvtv-theme', next);
     });
 
     // ─── Auth Nav ───────────────────────────────────────────────────
+    const token = localStorage.getItem('smvtv-token');
     const username = localStorage.getItem('smvtv-username');
     const authNav = document.getElementById('authNav');
     if (username) {
@@ -160,21 +189,29 @@
     } else {
       authNav.innerHTML = `<a href="login.html" class="login-link">Sign In</a>`;
     }
-
     function logout() {
       localStorage.removeItem('smvtv-token');
       localStorage.removeItem('smvtv-username');
       window.location.reload();
     }
 
-    // ─── Data & State ───────────────────────────────────────────────
+    // ─── Toast ──────────────────────────────────────────────────────
+    function showToast(msg, color) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.style.borderColor = color || 'var(--border)';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    // ─── State ──────────────────────────────────────────────────────
     let allAnime = [];
+    let userWatchlist = [];
     let heroIndex = 0;
     let heroInterval;
-
-    // ─── Hero Banner ────────────────────────────────────────────────
     const FEATURED_COUNT = 5;
 
+    // ─── Hero Banner ────────────────────────────────────────────────
     function setHero(anime, index) {
       heroIndex = index;
       document.getElementById('heroBg').style.backgroundImage = `url('${anime.image}')`;
@@ -183,9 +220,7 @@
       document.getElementById('heroDesc').textContent = anime.description;
       document.getElementById('heroWatch').href = `watch.html?title=${encodeURIComponent(anime.title)}&ep=1&season=1`;
       document.getElementById('heroInfo').href = `show.html?title=${encodeURIComponent(anime.title)}`;
-      document.querySelectorAll('.hero-dot').forEach((d, i) => {
-        d.classList.toggle('active', i === index);
-      });
+      document.querySelectorAll('.hero-dot').forEach((d, i) => d.classList.toggle('active', i === index));
     }
 
     function buildHeroDots(featured) {
@@ -194,20 +229,13 @@
       featured.forEach((anime, i) => {
         const btn = document.createElement('button');
         btn.className = 'hero-dot' + (i === 0 ? ' active' : '');
-        btn.addEventListener('click', () => {
-          clearInterval(heroInterval);
-          setHero(featured[i], i);
-          startHeroRotation(featured);
-        });
+        btn.addEventListener('click', () => { clearInterval(heroInterval); setHero(featured[i], i); startHeroRotation(featured); });
         dotsEl.appendChild(btn);
       });
     }
 
     function startHeroRotation(featured) {
-      heroInterval = setInterval(() => {
-        heroIndex = (heroIndex + 1) % featured.length;
-        setHero(featured[heroIndex], heroIndex);
-      }, 6000);
+      heroInterval = setInterval(() => { heroIndex = (heroIndex + 1) % featured.length; setHero(featured[heroIndex], heroIndex); }, 6000);
     }
 
     function initHero(data) {
@@ -217,40 +245,134 @@
       startHeroRotation(featured);
     }
 
-    // ─── Render Cards ────────────────────────────────────────────────
-    function renderCards(list) {
-      const container = document.getElementById('animeContainer');
-      const noResults = document.getElementById('noResults');
-      if (list.length === 0) {
-        container.innerHTML = '';
-        noResults.style.display = 'block';
-        return;
-      }
-      noResults.style.display = 'none';
-      container.innerHTML = list.map(anime => `
+    // ─── Card HTML helper ────────────────────────────────────────────
+    function cardHTML(anime) {
+      const isSaved = userWatchlist.includes(anime.title);
+      const safeTitle = anime.title.replace(/'/g, "\\'");
+      return `
         <div class="anime-card">
           <div class="card-img-wrap">
             <img src="${anime.image}" alt="${anime.title}" loading="lazy">
           </div>
           <div class="card-body">
-            <h3>${anime.title}</h3>
-            <div class="card-rating">⭐ ${anime.rating}</div>
+            <div class="card-body-row">
+              <div class="card-body-info">
+                <h3>${anime.title}</h3>
+                <div class="card-rating">⭐ ${anime.rating}</div>
+              </div>
+              <button class="heart-btn ${isSaved ? 'saved' : ''}"
+                onclick="toggleWatchlist('${safeTitle}')"
+                id="bm-${encodeURIComponent(anime.title)}"
+                title="${isSaved ? 'Already in your list' : 'Add to My List'}">
+                <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="heart-outline" d="M12 21C12 21 3 13.5 3 8a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-9 13-9 13z"/></svg>
+              </button>
+            </div>
             <a href="show.html?title=${encodeURIComponent(anime.title)}" class="more-info">More Info</a>
           </div>
-        </div>
-      `).join('');
+        </div>`;
+    }
+
+    // ─── Render Cards ────────────────────────────────────────────────
+    function renderCards(list) {
+      const container = document.getElementById('animeContainer');
+      const noResults = document.getElementById('noResults');
+      if (list.length === 0) { container.innerHTML = ''; noResults.style.display = 'block'; return; }
+      noResults.style.display = 'none';
+      container.innerHTML = list.map(cardHTML).join('');
+    }
+
+    // ─── Render Watchlist Section ────────────────────────────────────
+    function renderWatchlistSection(watchlistTitles) {
+      const section = document.getElementById('watchlistSection');
+      const container = document.getElementById('watchlistContainer');
+      const watched = allAnime.filter(a => watchlistTitles.includes(a.title));
+      if (watched.length === 0) { section.style.display = 'none'; return; }
+      section.style.display = 'block';
+      container.innerHTML = watched.map(cardHTML).join('');
+    }
+
+    // ─── Toggle Watchlist ────────────────────────────────────────────
+    const heartSVG = `<svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="heart-outline" d="M12 21C12 21 3 13.5 3 8a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-9 13-9 13z"/></svg>`;
+
+    async function toggleWatchlist(title) {
+      if (!token) {
+        showToast('🔒 Sign in to save anime to your list', '#e63946');
+        return;
+      }
+
+      const encodedTitle = encodeURIComponent(title);
+      const isSaved = userWatchlist.includes(title);
+
+      if (isSaved) {
+        // Optimistically remove
+        userWatchlist = userWatchlist.filter(t => t !== title);
+        document.querySelectorAll('[id="bm-' + encodedTitle + '"]').forEach(btn => {
+          btn.classList.remove('saved');
+          btn.innerHTML = heartSVG;
+          btn.title = 'Add to My List';
+        });
+        renderWatchlistSection(userWatchlist);
+
+        try {
+          await fetch('/api/watchlist', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+            body: JSON.stringify({ title })
+          });
+          showToast('Removed from My List', 'var(--border)');
+        } catch (err) {
+          // Revert on failure
+          userWatchlist.push(title);
+          document.querySelectorAll('[id="bm-' + encodedTitle + '"]').forEach(btn => {
+            btn.classList.add('saved');
+            btn.innerHTML = heartSVG;
+            btn.title = 'Already in your list';
+          });
+          renderWatchlistSection(userWatchlist);
+          showToast('❌ Failed to remove. Try again.', '#e63946');
+        }
+      } else {
+        // Optimistically add
+        userWatchlist.push(title);
+        document.querySelectorAll('[id="bm-' + encodedTitle + '"]').forEach(btn => {
+          btn.classList.add('saved');
+          btn.innerHTML = heartSVG;
+          btn.title = 'Already in your list';
+        });
+
+        try {
+          const res = await fetch('/api/watchlist', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+            body: JSON.stringify({ title })
+          });
+          const data = await res.json();
+          if (res.ok) {
+            userWatchlist = data.watchlist;
+            showToast('✅ Added to My List!', '#22c55e');
+            renderWatchlistSection(userWatchlist);
+          }
+        } catch (err) {
+          // Revert on failure
+          userWatchlist = userWatchlist.filter(t => t !== title);
+          document.querySelectorAll('[id="bm-' + encodedTitle + '"]').forEach(btn => {
+            btn.classList.remove('saved');
+            btn.innerHTML = heartSVG;
+            btn.title = 'Add to My List';
+          });
+          showToast('❌ Failed to add. Try again.', '#e63946');
+        }
+      }
     }
 
     // ─── Skeleton Loaders ────────────────────────────────────────────
     function showSkeletons() {
-      const container = document.getElementById('animeContainer');
-      container.innerHTML = Array(8).fill(`
+      document.getElementById('animeContainer').innerHTML = Array(8).fill(`
         <div class="skeleton-card">
           <div class="skeleton skeleton-img"></div>
           <div class="skeleton skeleton-text"></div>
           <div class="skeleton skeleton-btn"></div>
-        </div>
-      `).join('');
+        </div>`).join('');
     }
 
     // ─── Search ──────────────────────────────────────────────────────
@@ -261,35 +383,25 @@
       const q = searchInput.value.trim().toLowerCase();
       if (!q) { searchResults.style.display = 'none'; return; }
       const matches = allAnime.filter(a => a.title.toLowerCase().includes(q)).slice(0, 6);
-      if (matches.length === 0) { searchResults.style.display = 'none'; return; }
+      if (!matches.length) { searchResults.style.display = 'none'; return; }
       searchResults.innerHTML = matches.map(a => `
         <a href="show.html?title=${encodeURIComponent(a.title)}" class="search-result-item">
-          <img src="${a.image}" alt="${a.title}">
-          <span>${a.title}</span>
-        </a>
-      `).join('');
+          <img src="${a.image}" alt="${a.title}"><span>${a.title}</span>
+        </a>`).join('');
       searchResults.style.display = 'block';
     });
 
     document.getElementById('searchBtn').addEventListener('click', () => {
       const q = searchInput.value.trim().toLowerCase();
       if (!q) { renderCards(allAnime); return; }
-      const filtered = allAnime.filter(a => a.title.toLowerCase().includes(q));
-      renderCards(filtered);
+      renderCards(allAnime.filter(a => a.title.toLowerCase().includes(q)));
       searchResults.style.display = 'none';
     });
 
-    searchInput.addEventListener('keydown', e => {
-      if (e.key === 'Enter') document.getElementById('searchBtn').click();
-    });
+    searchInput.addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('searchBtn').click(); });
+    document.addEventListener('click', e => { if (!e.target.closest('.search-results-wrapper')) searchResults.style.display = 'none'; });
 
-    document.addEventListener('click', e => {
-      if (!e.target.closest('.search-results-wrapper')) {
-        searchResults.style.display = 'none';
-      }
-    });
-
-    // ─── Genre Filter Chips ──────────────────────────────────────────
+    // ─── Genre Filter ────────────────────────────────────────────────
     document.querySelectorAll('.filter-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
@@ -304,7 +416,6 @@
       });
     });
 
-    // ─── Dropdown nav filters ────────────────────────────────────────
     document.querySelectorAll('[data-filter]').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
@@ -319,21 +430,27 @@
       });
     });
 
-    // ─── Fetch & Init ────────────────────────────────────────────────
-    showSkeletons();
+    // ─── Init ────────────────────────────────────────────────────────
+    async function init() {
+      showSkeletons();
+      // Fetch anime AND watchlist in parallel
+      const [animeRes, watchlistRes] = await Promise.all([
+        fetch('/api/anime').then(r => r.json()).catch(() => []),
+        token ? fetch('/api/watchlist', { headers: { 'Authorization': 'Bearer ' + token } }).then(r => r.json()).catch(() => ({ watchlist: [] })) : Promise.resolve({ watchlist: [] })
+      ]);
 
-    fetch('/api/anime')
-      .then(res => res.json())
-      .then(data => {
-        allAnime = data;
-        initHero(data);
-        renderCards(data);
-      })
-      .catch(err => {
-        console.error('Error:', err);
-        document.getElementById('animeContainer').innerHTML =
-          '<p style="color:var(--text-muted);text-align:center;padding:40px;grid-column:1/-1">Failed to load anime. Make sure the server is running.</p>';
-      });
+      allAnime = animeRes;
+      userWatchlist = watchlistRes.watchlist || [];
+
+      initHero(allAnime);
+      renderCards(allAnime);
+      if (token && userWatchlist.length > 0) renderWatchlistSection(userWatchlist);
+    }
+
+    init().catch(() => {
+      document.getElementById('animeContainer').innerHTML =
+        '<p style="color:var(--text-muted);text-align:center;padding:40px;grid-column:1/-1">Failed to load anime. Make sure the server is running.</p>';
+    });
   </script>
 </body>
 </html>
