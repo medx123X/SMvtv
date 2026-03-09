@@ -6,6 +6,44 @@
   <title>SMVtv — Anime Streaming</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .user-menu {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .user-greeting {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .logout-btn {
+      padding: 6px 14px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-secondary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .logout-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .login-link {
+      padding: 7px 18px;
+      background: var(--accent);
+      border-radius: 6px;
+      color: #fff !important;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .login-link:hover { opacity: 0.85; }
+  </style>
 </head>
 <body>
 
@@ -36,6 +74,7 @@
       </div>
     </div>
     <a href="about.html">About</a>
+    <div id="authNav"></div>
     <button class="theme-toggle" id="themeToggle" title="Toggle theme">
       <span class="toggle-icon moon">🌙</span>
       <span class="toggle-icon sun">☀️</span>
@@ -109,6 +148,25 @@
       localStorage.setItem('smvtv-theme', next);
     });
 
+    // ─── Auth Nav ───────────────────────────────────────────────────
+    const username = localStorage.getItem('smvtv-username');
+    const authNav = document.getElementById('authNav');
+    if (username) {
+      authNav.innerHTML = `
+        <div class="user-menu">
+          <span class="user-greeting">👤 ${username}</span>
+          <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>`;
+    } else {
+      authNav.innerHTML = `<a href="login.html" class="login-link">Sign In</a>`;
+    }
+
+    function logout() {
+      localStorage.removeItem('smvtv-token');
+      localStorage.removeItem('smvtv-username');
+      window.location.reload();
+    }
+
     // ─── Data & State ───────────────────────────────────────────────
     let allAnime = [];
     let heroIndex = 0;
@@ -123,10 +181,8 @@
       document.getElementById('heroTitle').textContent = anime.title;
       document.getElementById('heroRating').textContent = `⭐ ${anime.rating}`;
       document.getElementById('heroDesc').textContent = anime.description;
-      document.getElementById('heroWatch').href = `watch.html?title=${encodeURIComponent(anime.title)}&ep=1`;
+      document.getElementById('heroWatch').href = `watch.html?title=${encodeURIComponent(anime.title)}&ep=1&season=1`;
       document.getElementById('heroInfo').href = `show.html?title=${encodeURIComponent(anime.title)}`;
-
-      // Update dots
       document.querySelectorAll('.hero-dot').forEach((d, i) => {
         d.classList.toggle('active', i === index);
       });
@@ -165,13 +221,11 @@
     function renderCards(list) {
       const container = document.getElementById('animeContainer');
       const noResults = document.getElementById('noResults');
-
       if (list.length === 0) {
         container.innerHTML = '';
         noResults.style.display = 'block';
         return;
       }
-
       noResults.style.display = 'none';
       container.innerHTML = list.map(anime => `
         <div class="anime-card">
@@ -206,14 +260,8 @@
     searchInput.addEventListener('input', () => {
       const q = searchInput.value.trim().toLowerCase();
       if (!q) { searchResults.style.display = 'none'; return; }
-
       const matches = allAnime.filter(a => a.title.toLowerCase().includes(q)).slice(0, 6);
-
-      if (matches.length === 0) {
-        searchResults.style.display = 'none';
-        return;
-      }
-
+      if (matches.length === 0) { searchResults.style.display = 'none'; return; }
       searchResults.innerHTML = matches.map(a => `
         <a href="show.html?title=${encodeURIComponent(a.title)}" class="search-result-item">
           <img src="${a.image}" alt="${a.title}">
@@ -248,7 +296,6 @@
         chip.classList.add('active');
         const genre = chip.dataset.genre;
         if (genre === 'all') { renderCards(allAnime); return; }
-        // Filter by genre tag if present, else match in title/description as fallback
         const filtered = allAnime.filter(a =>
           (a.genres && a.genres.includes(genre)) ||
           (a.description && a.description.toLowerCase().includes(genre.toLowerCase()))
