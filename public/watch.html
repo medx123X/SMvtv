@@ -222,9 +222,26 @@
     //
     // Server 1 — vidsrc.me       (IMDB, original, proven working — English default)
     // Server 2 — smashystream     (TMDB, confirmed working)
-    // Server 3 — 2embed.cc        (TMDB, anime-friendly — often has Japanese audio)
+    // Server 3 — 2anime.xyz       (GogoAnime-based, Japanese audio + English subs)
     // Server 4 — vidsrc.me Arabic (same as S1 but forces Arabic subtitles)
     //
+    function jpAnimeSlug(anime, season) {
+      // 1. Per-season override: seasons[i].jpSlug in database.json
+      if (anime.seasons && anime.seasons.length) {
+        const s = anime.seasons.find(x => x.season === season);
+        if (s && s.jpSlug) return s.jpSlug;
+      }
+      // 2. Anime-level override: anime.jpSlug
+      if (anime.jpSlug) {
+        return season > 1 ? `${anime.jpSlug}-season-${season}` : anime.jpSlug;
+      }
+      // 3. Auto-generate from title
+      const base = anime.title.toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+      return season > 1 ? `${base}-season-${season}` : base;
+    }
+
     function buildUrl(anime, season, episode, server) {
       const imdb = anime.imdbId || '';
       const tmdb = anime.tmdbId || '';
@@ -237,8 +254,8 @@
           // smashystream — TMDB based
           return `https://embed.smashystream.com/playere.php?tmdb=${tmdb}&season=${season}&episode=${episode}`;
         case 's3':
-          // vidsrc.icu — IMDB based, anime-friendly, often has JP audio track
-          return `https://vidsrc.icu/embed/tv/${imdb}/${season}/${episode}`;
+          // 2anime.xyz — GogoAnime-backed, JP audio + English subs by default
+          return `https://2anime.xyz/embed/${jpAnimeSlug(anime, season)}-episode-${episode}`;
         case 's4':
           // vidsrc.me with Arabic subtitles pre-selected (ds_langs=ar)
           return `https://vidsrc.me/embed/tv?imdb=${imdb}&season=${season}&episode=${episode}&ds_langs=ar&default_lang=ar`;
