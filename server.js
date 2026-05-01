@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -7,8 +8,13 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const JWT_SECRET = process.env.JWT_SECRET || 'smvtv_super_secret_key_2026';
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://smvtvuser:Smvtv2026@ac-ts6bogs-shard-00-00.1hifndc.mongodb.net:27017,ac-ts6bogs-shard-00-01.1hifndc.mongodb.net:27017,ac-ts6bogs-shard-00-02.1hifndc.mongodb.net:27017/?ssl=true&replicaSet=atlas-kpxoq7-shard-0&authSource=admin&appName=SMVtv';
+const JWT_SECRET = process.env.JWT_SECRET;
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!JWT_SECRET || !MONGO_URI) {
+  console.error('❌ Missing required env vars: JWT_SECRET and/or MONGO_URI. See .env.example');
+  process.exit(1);
+}
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));

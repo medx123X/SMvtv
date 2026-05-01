@@ -832,9 +832,11 @@ body {
 
 .video-side iframe {
   width: 100%;
-  aspect-ratio: 16/9;
+  flex: 1;
+  min-height: 0;
   display: block;
   background: #000;
+  border: none;
 }
 
 .episode-side {
