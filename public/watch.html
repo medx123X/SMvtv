@@ -146,7 +146,7 @@
         <span class="server-label">SERVER:</span>
         <button class="server-btn active" id="btn-s1" onclick="switchServer('s1',this)">Server 1</button>
         <button class="server-btn"        id="btn-s2" onclick="switchServer('s2',this)">Server 2</button>
-        <button class="server-btn"        id="btn-s3" onclick="switchServer('s3',this)">Server 3</button>
+        <button class="server-btn"        id="btn-s3" onclick="switchServer('s3',this)">Server 3 (JP)</button>
         <button class="server-btn arabic" id="btn-s4" onclick="switchServer('s4',this)">عربي 🌙</button>
         <span class="server-tip">If one fails, try another →</span>
         <button class="server-btn fs-btn" id="fsBtn" title="Fullscreen (F)" onclick="goFullscreen()">⛶ Fullscreen</button>
@@ -222,7 +222,7 @@
     //
     // Server 1 — vidsrc.me       (IMDB, original, proven working — English default)
     // Server 2 — smashystream     (TMDB, confirmed working)
-    // Server 3 — player.autoembed.cc (TMDB, confirmed working)
+    // Server 3 — 2embed.cc        (TMDB, anime-friendly — often has Japanese audio)
     // Server 4 — vidsrc.me Arabic (same as S1 but forces Arabic subtitles)
     //
     function buildUrl(anime, season, episode, server) {
@@ -237,8 +237,8 @@
           // smashystream — TMDB based
           return `https://embed.smashystream.com/playere.php?tmdb=${tmdb}&season=${season}&episode=${episode}`;
         case 's3':
-          // autoembed — TMDB based
-          return `https://player.autoembed.cc/embed/tv/${tmdb}/${season}/${episode}`;
+          // 2embed.cc — TMDB based, often provides JP audio track for anime
+          return `https://www.2embed.cc/embedtv/${tmdb}&s=${season}&e=${episode}`;
         case 's4':
           // vidsrc.me with Arabic subtitles pre-selected (ds_langs=ar)
           return `https://vidsrc.me/embed/tv?imdb=${imdb}&season=${season}&episode=${episode}&ds_langs=ar&default_lang=ar`;
