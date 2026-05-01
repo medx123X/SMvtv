@@ -2,7 +2,7 @@
   {
     "title": "Attack on Titan",
     "image": "https://i.pinimg.com/1200x/c4/cb/57/c4cb5734c7c94d3413efdaa3bca09a6d.jpg",
-    "rating": 9.0,
+    "rating": 9,
     "description": "In a world where humanity shelters behind towering walls from man-eating Titans, a determined teen joins the elite Survey Corps to fight the giants and uncover the secrets of their origin.",
     "trailer": "https://www.youtube.com/embed/E7WytLM2KvY",
     "anigoSlug": "shingeki-no-kyojin-q0n1",
@@ -244,7 +244,8 @@
             "number": 25,
             "title": "Episode 25"
           }
-        ]
+        ],
+        "anigoSlug": "shingeki-no-kyojin-q0n1"
       },
       {
         "season": 2,
@@ -298,7 +299,8 @@
             "number": 12,
             "title": "Episode 12"
           }
-        ]
+        ],
+        "anigoSlug": "shingeki-no-kyojin-season-2-1dzg"
       },
       {
         "season": 3,
@@ -392,7 +394,8 @@
             "number": 22,
             "title": "Episode 22"
           }
-        ]
+        ],
+        "anigoSlug": "shingeki-no-kyojin-season-3-lxk9"
       },
       {
         "season": 4,
@@ -510,7 +513,8 @@
             "number": 28,
             "title": "Episode 28"
           }
-        ]
+        ],
+        "anigoSlug": "shingeki-no-kyojin-the-final-season-d4y8"
       }
     ],
     "imdbId": "tt2560140",
@@ -769,7 +773,8 @@
             "number": 26,
             "title": "Episode 26"
           }
-        ]
+        ],
+        "anigoSlug": "kimetsu-no-yaiba-8eer"
       },
       {
         "season": 2,
@@ -897,7 +902,8 @@
             "number": 11,
             "title": "Episode 11"
           }
-        ]
+        ],
+        "anigoSlug": "kimetsu-no-yaiba-katanakaji-no-sato-hen-gqr2"
       }
     ],
     "imdbId": "tt9335498",
@@ -1138,7 +1144,8 @@
             "number": 24,
             "title": "Episode 24"
           }
-        ]
+        ],
+        "anigoSlug": "jujutsu-kaisen-r6w8"
       },
       {
         "season": 2,
@@ -1236,7 +1243,8 @@
             "number": 23,
             "title": "Episode 23"
           }
-        ]
+        ],
+        "anigoSlug": "jujutsu-kaisen-2nd-season-on4e"
       }
     ],
     "imdbId": "tt12343534",
@@ -2170,7 +2178,8 @@
             "number": 13,
             "title": "Episode 13"
           }
-        ]
+        ],
+        "anigoSlug": "ore-dake-level-up-na-ken-8d3q"
       },
       {
         "season": 2,
@@ -2224,7 +2233,8 @@
             "number": 12,
             "title": "Episode 12"
           }
-        ]
+        ],
+        "anigoSlug": "ore-dake-level-up-na-ken-season-2-arise-from-the-shadow-xg03"
       }
     ],
     "imdbId": "tt21209876",
@@ -4551,7 +4561,8 @@
             "number": 12,
             "title": "Episode 12"
           }
-        ]
+        ],
+        "anigoSlug": "chainsaw-man-5wz8"
       }
     ],
     "imdbId": "tt13237060",
@@ -4692,7 +4703,8 @@
             "number": 13,
             "title": "Episode 13"
           }
-        ]
+        ],
+        "anigoSlug": "youkoso-jitsuryoku-shijou-shugi-no-kyoushitsu-e-80ey"
       },
       {
         "season": 2,
@@ -4750,7 +4762,8 @@
             "number": 13,
             "title": "Episode 13"
           }
-        ]
+        ],
+        "anigoSlug": "youkoso-jitsuryoku-shijou-shugi-no-kyoushitsu-e-2nd-season-o8ge"
       },
       {
         "season": 3,
@@ -4800,7 +4813,8 @@
             "number": 11,
             "title": "Episode 11"
           }
-        ]
+        ],
+        "anigoSlug": "youkoso-jitsuryoku-shijou-shugi-no-kyoushitsu-e-3rd-season-9ex8"
       }
     ],
     "imdbId": "tt7159024",
@@ -4942,7 +4956,8 @@
             "number": 13,
             "title": "Episode 13"
           }
-        ]
+        ],
+        "anigoSlug": "boku-no-hero-academia-de4k"
       },
       {
         "season": 2,
@@ -5048,7 +5063,8 @@
             "number": 25,
             "title": "Episode 25"
           }
-        ]
+        ],
+        "anigoSlug": "boku-no-hero-academia-2nd-season-k9d3"
       },
       {
         "season": 3,
@@ -5154,7 +5170,8 @@
             "number": 25,
             "title": "Episode 25"
           }
-        ]
+        ],
+        "anigoSlug": "boku-no-hero-academia-3rd-season-925x"
       },
       {
         "season": 4,
@@ -5260,7 +5277,8 @@
             "number": 25,
             "title": "Episode 25"
           }
-        ]
+        ],
+        "anigoSlug": "boku-no-hero-academia-4th-season-4d2v"
       },
       {
         "season": 5,
@@ -5366,7 +5384,8 @@
             "number": 25,
             "title": "Episode 25"
           }
-        ]
+        ],
+        "anigoSlug": "boku-no-hero-academia-5th-season-xn39"
       },
       {
         "season": 6,
@@ -5472,7 +5491,8 @@
             "number": 25,
             "title": "Episode 25"
           }
-        ]
+        ],
+        "anigoSlug": "boku-no-hero-academia-6th-season-1ykx"
       }
     ],
     "imdbId": "tt5626028",
@@ -5605,7 +5625,8 @@
             "number": 12,
             "title": "Episode 12"
           }
-        ]
+        ],
+        "anigoSlug": "one-punch-man-y81m"
       },
       {
         "season": 2,
@@ -5659,7 +5680,8 @@
             "number": 12,
             "title": "Episode 12"
           }
-        ]
+        ],
+        "anigoSlug": "one-punch-man-2nd-season-e86p"
       }
     ],
     "imdbId": "tt4508902",
@@ -5881,7 +5903,8 @@
             "number": 22,
             "title": "Episode 22"
           }
-        ]
+        ],
+        "anigoSlug": "your-lie-in-april-pg2r"
       }
     ],
     "imdbId": "tt3909536",
@@ -6014,7 +6037,8 @@
             "number": 12,
             "title": "Episode 12"
           }
-        ]
+        ],
+        "anigoSlug": "kakegurui-dk58"
       },
       {
         "season": 2,
@@ -6068,7 +6092,8 @@
             "number": 12,
             "title": "Episode 12"
           }
-        ]
+        ],
+        "anigoSlug": "kakegurui-3z51"
       }
     ],
     "imdbId": "tt7062408",
@@ -6209,7 +6234,8 @@
             "number": 13,
             "title": "Episode 13"
           }
-        ]
+        ],
+        "anigoSlug": "blue-spring-ride-8rk5"
       }
     ],
     "imdbId": "tt3878514",
@@ -6332,7 +6358,8 @@
             "number": 11,
             "title": "Episode 11"
           }
-        ]
+        ],
+        "anigoSlug": "oshi-no-ko-d1rm"
       },
       {
         "season": 2,
@@ -6386,7 +6413,8 @@
             "number": 12,
             "title": "Episode 12"
           }
-        ]
+        ],
+        "anigoSlug": "oshi-no-ko-2nd-season-dvw8"
       }
     ],
     "imdbId": "tt21209984",
@@ -6636,7 +6664,8 @@
             "number": 25,
             "title": "Episode 25"
           }
-        ]
+        ],
+        "anigoSlug": "spy-x-family-e48y"
       },
       {
         "season": 2,
@@ -6690,7 +6719,8 @@
             "number": 12,
             "title": "Episode 12"
           }
-        ]
+        ],
+        "anigoSlug": "spy-x-family-season-2-wog8"
       }
     ],
     "imdbId": "tt13966224",
@@ -6700,7 +6730,7 @@
   {
     "title": "Hunter X Hunter",
     "image": "https://i.pinimg.com/originals/9e/84/df/9e84dfb84672c2c7e5252e9c9118d2e7.png",
-    "rating": 9.0,
+    "rating": 9,
     "description": "Gon Freecss aspires to become a Hunter, an exceptional being capable of greatness. With his friends and his potential, he seeks out his father, who left him when he was younger.",
     "trailer": "https://www.youtube.com/embed/DbylrrZ6C_k",
     "episodes": [
@@ -7712,7 +7742,8 @@
             "number": 25,
             "title": "Episode 25"
           }
-        ]
+        ],
+        "anigoSlug": "code-geass-hangyaku-no-lelouch-lx04"
       },
       {
         "season": 2,
@@ -7818,7 +7849,8 @@
             "number": 25,
             "title": "Episode 25"
           }
-        ]
+        ],
+        "anigoSlug": "code-geass-hangyaku-no-lelouch-r2-x4r4"
       }
     ],
     "imdbId": "tt0994314",

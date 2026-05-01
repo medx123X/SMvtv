@@ -2,3 +2,8 @@ node_modules/
 .env
 .DS_Store
 npm-debug.log*
+
+# One-off scrapers
+scrape-anigo.js
+apply-slugs.js
+anigo-candidates.json
