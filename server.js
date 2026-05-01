@@ -19,9 +19,26 @@ if (!JWT_SECRET || !MONGO_URI) {
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect(MONGO_URI)
-  .then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.error('❌ MongoDB error:', err));
+// ── MongoDB connection (cached for serverless) ───────────────────────
+let cachedConn = global._mongoConn || null;
+function connectDB() {
+  if (cachedConn) return cachedConn;
+  cachedConn = mongoose.connect(MONGO_URI, {
+    serverSelectionTimeoutMS: 8000,
+  })
+    .then(m => { console.log('✅ MongoDB connected'); return m; })
+    .catch(err => { cachedConn = null; console.error('❌ MongoDB error:', err); throw err; });
+  global._mongoConn = cachedConn;
+  return cachedConn;
+}
+
+// Ensure DB is connected before handling any /api route that needs it
+app.use(async (req, res, next) => {
+  if (!req.path.startsWith('/api/')) return next();
+  if (req.path === '/api/anime') return next(); // file-based, no DB
+  try { await connectDB(); next(); }
+  catch (err) { res.status(503).json({ error: 'Database unavailable', detail: err.message }); }
+});
 
 // User Schema (watchlist is array of anime titles)
 const userSchema = new mongoose.Schema({
@@ -84,8 +101,8 @@ app.post('/api/register', async (req, res) => {
     const token = jwt.sign({ id: user._id, username: user.username }, JWT_SECRET, { expiresIn: '7d' });
     res.status(201).json({ token, username: user.username });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Server error' });
+    console.error('REGISTER ERROR:', err);
+    res.status(500).json({ error: 'Server error', detail: err.message });
   }
 });
 
@@ -105,8 +122,8 @@ app.post('/api/login', async (req, res) => {
     const token = jwt.sign({ id: user._id, username: user.username }, JWT_SECRET, { expiresIn: '7d' });
     res.json({ token, username: user.username });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Server error' });
+    console.error('LOGIN ERROR:', err);
+    res.status(500).json({ error: 'Server error', detail: err.message });
   }
 });
 
