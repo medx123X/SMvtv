@@ -146,7 +146,7 @@
         <span class="server-label">SERVER:</span>
         <button class="server-btn active" id="btn-s1" onclick="switchServer('s1',this)">Server 1</button>
         <button class="server-btn"        id="btn-s2" onclick="switchServer('s2',this)">Server 2</button>
-        <button class="server-btn"        id="btn-s3" onclick="switchServer('s3',this)">Server 3 (JP)</button>
+        <button class="server-btn"        id="btn-s3" onclick="switchServer('s3',this)" title="Opens anigo.to in a new tab">Server 3 (JP) ↗</button>
         <button class="server-btn arabic" id="btn-s4" onclick="switchServer('s4',this)">عربي 🌙</button>
         <span class="server-tip">If one fails, try another →</span>
         <button class="server-btn fs-btn" id="fsBtn" title="Fullscreen (F)" onclick="goFullscreen()">⛶ Fullscreen</button>
@@ -270,6 +270,18 @@
     }
 
     function switchServer(server, btn) {
+      // Server 3 (JP via anigo.to) → open in a new tab instead of iframe
+      // because anigo.to blocks being framed. Keep current iframe as-is.
+      if (server === 's3') {
+        if (!currentAnime) return;
+        const slug = anigoSlug(currentAnime, currentSeason);
+        if (!slug) {
+          alert('Japanese version not yet configured for this anime.');
+          return;
+        }
+        window.open(`https://anigo.to/watch/${slug}#ep=${currentEp}`, '_blank', 'noopener');
+        return; // do NOT switch active iframe server
+      }
       currentServer = server;
       document.querySelectorAll('.server-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
