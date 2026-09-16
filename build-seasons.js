@@ -1,25 +1,31 @@
 /**
- * build-seasons.js
+ * build-seasons.js  (v2 — auto-discovers missing seasons, not just merges duplicates)
  *
- * Looks at every entry in database.json, checks AniList for sequel/prequel
- * relations, and merges entries that belong to the same franchise (e.g.
- * "Naruto" + "Naruto: Shippuden", or "Dragon Ball" + "Dragon Ball Z" +
- * "Dragon Ball Super") into ONE entry with a real seasons structure:
+ * For every entry in database.json, this finds its FULL season chain on
+ * AniList (via SEQUEL/PREQUEL relations, TV format only) and builds a
+ * real seasons structure:
  *
  *   { title, image, rating, description, ..., seasons: [
  *       { season: 1, episodes: [...] },
  *       { season: 2, episodes: [...] }
  *   ]}
  *
- * This matches exactly what public/show.html and public/watch.html already
- * expect (they check `anime.seasons` and fall back to flat `anime.episodes`
- * when there's only one season).
+ * Unlike v1, this does NOT require every season to already exist as its
+ * own row in database.json. If your database only has "Tokyo Revengers"
+ * (season 1) and not its season 2, this script fetches season 2 directly
+ * from AniList and adds it as a new season block — with placeholder
+ * episode slots for you to fill video links into, same as add-anime.js.
+ *
+ * If a later season DOES already exist as its own row (like your Naruto /
+ * Naruto: Shippuden case), it's merged in using its EXISTING episodes
+ * (so any video links you already added aren't lost), and the now-
+ * redundant duplicate row is removed — same behavior as before.
  *
  * Usage:
  *   node build-seasons.js
  *
- * Safe to run multiple times — already-merged entries are left alone, and
- * a backup of database.json is written before any changes are saved.
+ * Safe to run multiple times — entries that already have a `seasons`
+ * array are skipped. A backup of database.json is written first.
  */
 
 const fs = require('fs');
@@ -32,9 +38,14 @@ const DELAY_MS = 1400;
 const MAX_RETRIES = 4;
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
 function loadDb() { return JSON.parse(fs.readFileSync(DB_PATH, 'utf8')); }
 function saveDb(db) { fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2), 'utf8'); }
+function normTitle(t) { return (t || '').toLowerCase().trim(); }
+
+function buildEpisodePlaceholders(count) {
+  const n = count || 12;
+  return Array.from({ length: n }, (_, i) => ({ number: i + 1, title: `Episode ${i + 1}`, video: '' }));
+}
 
 async function fetchWithRetry(fetchFn, label) {
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
@@ -48,118 +59,124 @@ async function fetchWithRetry(fetchFn, label) {
         continue;
       }
     }
-    return null; // give up quietly on real errors — not every title needs to resolve
+    return null;
   }
 }
 
-const RELATIONS_QUERY = `
+const MEDIA_QUERY = `
 query ($search: String) {
   Media(search: $search, type: ANIME, sort: [SEARCH_MATCH]) {
     id
     format
+    episodes
     title { romaji english }
     relations {
       edges {
         relationType
-        node { id title { romaji english } format }
+        node { id title { romaji english } format episodes }
       }
     }
   }
 }`;
 
-async function fetchRelations(title) {
+async function fetchMedia(searchTitle) {
   const res = await fetchWithRetry(() => fetch(ANILIST_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ query: RELATIONS_QUERY, variables: { search: title } })
-  }), title);
+    body: JSON.stringify({ query: MEDIA_QUERY, variables: { search: searchTitle } })
+  }), searchTitle);
   if (!res) return null;
   const json = await res.json();
   return json.data && json.data.Media;
 }
 
-function normTitle(t) { return (t || '').toLowerCase().trim(); }
+function pickTitle(t) { return t.english || t.romaji; }
 
 async function main() {
   const db = loadDb();
   fs.writeFileSync(BACKUP_PATH, JSON.stringify(db, null, 2), 'utf8');
   console.log(`Backup written to ${path.basename(BACKUP_PATH)}\n`);
 
-  // Build a lookup of every entry already in database.json, by normalized title
   const byTitle = new Map();
   db.forEach((entry, idx) => byTitle.set(normTitle(entry.title), idx));
 
-  // For each entry, fetch its AniList sequel/prequel relations and try to
-  // match those related titles back to OTHER entries already in database.json
-  const nextOf = new Map(); // dbIndex -> dbIndex (this entry's sequel, if also in our db)
-  const prevOf = new Map(); // dbIndex -> dbIndex (this entry's prequel, if also in our db)
+  const mergedAway = new Set(); // db indices absorbed into another entry's seasons
+  let seasonsBuilt = 0, seasonsFetchedFresh = 0;
 
   for (let i = 0; i < db.length; i++) {
     const entry = db[i];
-    console.log(`Checking relations for: ${entry.title}`);
-    const media = await fetchRelations(entry.title);
+    if (mergedAway.has(i)) continue;
+    if (entry.seasons && entry.seasons.length > 1) continue; // already processed
+
+    console.log(`Checking: ${entry.title}`);
+    const media = await fetchMedia(entry.title);
     await sleep(DELAY_MS);
-    if (!media || !media.relations) continue;
+    if (!media) { console.log(`   ⚠️  Not found on AniList, skipping`); continue; }
 
-    for (const edge of media.relations.edges) {
-      if (edge.node.format !== 'TV') continue; // only chain TV seasons, skip movies/OVAs/specials
-      const relTitle = normTitle(edge.node.title.english || edge.node.title.romaji);
-      const relIdx = byTitle.get(relTitle);
-      if (relIdx === undefined || relIdx === i) continue;
+    // If this entry itself has a TV PREQUEL, it's a later season, not season 1 —
+    // skip it here; it'll be picked up when we process its season-1 entry.
+    const hasTvPrequel = (media.relations?.edges || []).some(
+      e => e.relationType === 'PREQUEL' && e.node.format === 'TV'
+    );
+    if (hasTvPrequel) continue;
 
-      if (edge.relationType === 'SEQUEL') nextOf.set(i, relIdx);
-      if (edge.relationType === 'PREQUEL') prevOf.set(i, relIdx);
+    // Walk forward through TV-format SEQUEL relations to build the full chain
+    const chainTitles = [pickTitle(media.title)];
+    const chainEpisodeSources = [{ dbIdx: i, aniEpisodes: media.episodes }];
+    let currentEdges = media.relations?.edges || [];
+    let guard = 0;
+
+    while (guard++ < 15) { // safety cap against any relation loops
+      const seq = currentEdges.find(e => e.relationType === 'SEQUEL' && e.node.format === 'TV');
+      if (!seq) break;
+
+      const seqTitle = normTitle(pickTitle(seq.node.title));
+      const existingIdx = byTitle.get(seqTitle);
+
+      if (existingIdx !== undefined) {
+        // This season already exists as its own row — reuse its episodes
+        // (preserves any video links already filled in) and remove the duplicate row later
+        chainTitles.push(pickTitle(seq.node.title));
+        chainEpisodeSources.push({ dbIdx: existingIdx, aniEpisodes: seq.node.episodes });
+        mergedAway.add(existingIdx);
+        // fetch ITS relations to keep walking the chain forward
+        const nextMedia = await fetchMedia(seqTitle);
+        await sleep(DELAY_MS);
+        currentEdges = nextMedia?.relations?.edges || [];
+      } else {
+        // Season not in our database at all — fetch it fresh from AniList
+        console.log(`   ➕ Found missing season not in database: ${pickTitle(seq.node.title)}`);
+        chainTitles.push(pickTitle(seq.node.title));
+        chainEpisodeSources.push({ dbIdx: null, aniEpisodes: seq.node.episodes });
+        seasonsFetchedFresh++;
+        const nextMedia = await fetchMedia(seqTitle);
+        await sleep(DELAY_MS);
+        currentEdges = nextMedia?.relations?.edges || [];
+      }
     }
-  }
 
-  // Walk each chain back to its season-1 entry, then forward to build the
-  // full ordered season list. Track visited indices so we don't process a
-  // chain more than once.
-  const visited = new Set();
-  const mergedIndices = new Set(); // indices that got absorbed into another entry, to delete later
-  let seasonsBuilt = 0;
+    if (chainTitles.length < 2) continue; // truly a single-season show, leave as-is
 
-  for (let i = 0; i < db.length; i++) {
-    if (visited.has(i)) continue;
-    if (!nextOf.has(i) && !prevOf.has(i)) { visited.add(i); continue; } // standalone, no chain
-
-    // walk back to season 1
-    let start = i;
-    while (prevOf.has(start) && !visited.has(start)) start = prevOf.get(start);
-
-    // walk forward from season 1, collecting the chain
-    const chain = [start];
-    visited.add(start);
-    let cur = start;
-    while (nextOf.has(cur) && !visited.has(nextOf.get(cur))) {
-      cur = nextOf.get(cur);
-      chain.push(cur);
-      visited.add(cur);
-    }
-
-    if (chain.length < 2) continue; // no real multi-season merge needed
-
-    const seasonEntry = db[chain[0]];
-    seasonEntry.seasons = chain.map((idx, n) => ({
+    entry.seasons = chainEpisodeSources.map((src, n) => ({
       season: n + 1,
-      episodes: db[idx].episodes || []
+      episodes: src.dbIdx !== null
+        ? (db[src.dbIdx].episodes && db[src.dbIdx].episodes.length ? db[src.dbIdx].episodes : buildEpisodePlaceholders(src.aniEpisodes))
+        : buildEpisodePlaceholders(src.aniEpisodes)
     }));
-    // Keep top-level episodes as season 1's, for any code path that doesn't check `seasons`
-    seasonEntry.episodes = seasonEntry.seasons[0].episodes;
-    delete seasonEntry.totalEpisodes;
+    entry.episodes = entry.seasons[0].episodes;
+    delete entry.totalEpisodes;
 
-    for (let n = 1; n < chain.length; n++) mergedIndices.add(chain[n]);
-
-    console.log(`✅ Merged ${chain.length} seasons into: ${seasonEntry.title}`);
+    console.log(`✅ Built ${entry.seasons.length} seasons for: ${entry.title}`);
     seasonsBuilt++;
   }
 
-  const finalDb = db.filter((_, idx) => !mergedIndices.has(idx));
+  const finalDb = db.filter((_, idx) => !mergedAway.has(idx));
   saveDb(finalDb);
 
-  console.log(`\nDone. Built seasons for ${seasonsBuilt} franchise(s). Removed ${mergedIndices.size} now-merged duplicate entries.`);
-  console.log(`database.json now has ${finalDb.length} entries (was ${db.length}).`);
+  console.log(`\nDone. Built seasons for ${seasonsBuilt} anime (${seasonsFetchedFresh} seasons fetched fresh from AniList that weren't in your database before).`);
+  console.log(`Removed ${mergedAway.size} now-redundant duplicate rows. database.json now has ${finalDb.length} entries (was ${db.length}).`);
   console.log(`If anything looks wrong, restore from ${path.basename(BACKUP_PATH)}.`);
 }
 
 main().catch(err => { console.error(err); process.exit(1); });
+
