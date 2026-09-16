@@ -14,8 +14,12 @@
  *   - Skips any title already in database.json (case-insensitive match).
  *   - AniList's free tier allows ~90 requests/minute; this script paces
  *     itself well under that automatically.
- *   - Episodes array is left empty ([]) — video links still need to be
- *     added separately (no public API provides pirated streaming links).
+ *   - Each entry gets placeholder episode slots ({number, title, video: ""})
+ *     matching your existing schema, sized to the real episode count —
+ *     you just need to paste video embed links in afterward. No public
+ *     API provides actual streaming links, so that part stays manual.
+ *   - Also auto-backfills episode placeholders for any entries already in
+ *     database.json that are missing them (e.g. from an earlier run).
  *   - anigoSlug is generated from the resolved English/Romaji title —
  *     it's just a URL-safe slug, separate from your scrape-anigo.js workflow.
  */
@@ -125,6 +129,9 @@ async function fetchAnimeData(title) {
     ? `https://www.youtube.com/embed/${result.trailer.id}`
     : '';
 
+  const totalEpisodes = result.episodes || null;
+  const episodes = buildEpisodePlaceholders(totalEpisodes);
+
   return {
     title: resolvedTitle,
     image: (result.coverImage && (result.coverImage.extraLarge || result.coverImage.large)) || '',
@@ -132,9 +139,18 @@ async function fetchAnimeData(title) {
     description: (result.description || '').replace(/<[^>]+>/g, '').split('\n')[0].slice(0, 500) || 'No description available.',
     trailer: trailerUrl,
     anigoSlug: slugify(resolvedTitle),
-    totalEpisodes: result.episodes || null,
-    episodes: [] // fill in later via a separate episode-fetch step
+    totalEpisodes,
+    episodes
   };
+}
+
+function buildEpisodePlaceholders(count) {
+  const n = count || 12;
+  return Array.from({ length: n }, (_, i) => ({
+    number: i + 1,
+    title: `Episode ${i + 1}`,
+    video: ''
+  }));
 }
 
 async function main() {
@@ -148,6 +164,22 @@ async function main() {
   }
 
   const db = loadDb();
+
+  // Backfill: any entry already in database.json with an empty episodes
+  // array (e.g. from an earlier run of this script) gets placeholder
+  // episode slots built from its saved totalEpisodes — no API calls needed.
+  let backfilled = 0;
+  for (const entry of db) {
+    if ((!entry.episodes || entry.episodes.length === 0)) {
+      entry.episodes = buildEpisodePlaceholders(entry.totalEpisodes);
+      backfilled++;
+    }
+  }
+  if (backfilled > 0) {
+    saveDb(db);
+    console.log(`Backfilled episode placeholders for ${backfilled} existing entries.\n`);
+  }
+
   const existingTitles = new Set(db.map(a => (a.title || '').toLowerCase().trim()));
 
   console.log(`Starting: ${titles.length} titles requested, ${db.length} already in database.json\n`);
