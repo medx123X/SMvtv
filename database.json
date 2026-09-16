@@ -9479,5 +9479,885 @@
     "imdbId": "tt0434665",
     "autoembedSlug": "bleach",
     "tmdbId": 46261
+  },
+  {
+    "title": "ONE PIECE",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-ELSYx3yMPcKM.jpg",
+    "rating": 9,
+    "description": "Gold Roger was known as the Pirate King, the strongest and most infamous being to have sailed the Grand Line. The capture and death of Roger by the World Government brought a change throughout the world. His last words before his death revealed the location of the greatest treasure in the world, One Piece. It was this revelation that brought about the Grand Age of Pirates, men who dreamed of finding One Piece (which promises an unlimited amount of riches and fame), and quite possibly the most co",
+    "trailer": "",
+    "anigoSlug": "one-piece",
+    "totalEpisodes": null,
+    "episodes": []
+  },
+  {
+    "title": "Naruto: Shippuden",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1735-kGfVm0YqCPcu.png",
+    "rating": 8,
+    "description": "Naruto: Shippuuden is the continuation of the original animated TV series Naruto. The story revolves around an older and slightly more matured Uzumaki Naruto and his quest to save his friend Uchiha Sasuke from the grips of the snake-like Shinobi, Orochimaru. After 2 and a half years Naruto finally returns to his village of Konoha, and sets about putting his ambitions to work, though it will not be easy, as he has amassed a few (more dangerous) enemies, in the likes of the shinobi organization; A",
+    "trailer": "",
+    "anigoSlug": "naruto-shippuden",
+    "totalEpisodes": 500,
+    "episodes": []
+  },
+  {
+    "title": "Death Note",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1535-kUgkcrfOrkUM.jpg",
+    "rating": 8,
+    "description": "Light Yagami is a genius high school student who is about to learn about life through a book of death. When a bored shinigami, a God of Death, named Ryuk drops a black notepad called a Death Note, Light receives power over life and death with the stroke of a pen. Determined to use this dark gift for the best, Light sets out to rid the world of evil… namely, the people he believes to be evil. Should anyone hold such power?",
+    "trailer": "https://www.youtube.com/embed/NlJZ-YgAt-c",
+    "anigoSlug": "death-note",
+    "totalEpisodes": 37,
+    "episodes": []
+  },
+  {
+    "title": "Fullmetal Alchemist: Brotherhood",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5114-nSWCgQlmOMtj.jpg",
+    "rating": 9,
+    "description": "\"In order for something to be obtained, something of equal value must be lost.\"",
+    "trailer": "https://www.youtube.com/embed/1ac3_YdSSy0",
+    "anigoSlug": "fullmetal-alchemist-brotherhood",
+    "totalEpisodes": 64,
+    "episodes": []
+  },
+  {
+    "title": "Dragon Ball Z",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx813-ZhnFNOeCU5dQ.png",
+    "rating": 8,
+    "description": "Goku is back with his new son, Gohan, but just when things are getting settled down, the adventures continue. Whether he is facing enemies such as Freeza, Cell, or Boo, Goku is proven to be an elite of his own and discovers his race, Saiyan. He meets many new people, gaining allies as well as enemies, as he still finds time to raise a family and be the happy-go-lucky Saiyan he is.",
+    "trailer": "",
+    "anigoSlug": "dragon-ball-z",
+    "totalEpisodes": 291,
+    "episodes": []
+  },
+  {
+    "title": "Dragon Ball",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx223-scE5uJfXqqj8.png",
+    "rating": 8,
+    "description": "Goku Son is a young boy who lives in the woods all alone—that is until a girl named Bulma runs into him in her search for a set of magical objects called the \"Dragon Balls.\" Since the artifacts are said to grant one wish to whoever collects all seven, Bulma hopes to gather them and wish for a perfect boyfriend. Goku happens to be in possession of a dragon ball, but unfortunately for Bulma, he refuses to part ways with it, so she makes him a deal: he can tag along on her journey if he lets her bo",
+    "trailer": "",
+    "anigoSlug": "dragon-ball",
+    "totalEpisodes": 153,
+    "episodes": []
+  },
+  {
+    "title": "Hunter x Hunter (2011)",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11061-y5gsT1hoHuHw.png",
+    "rating": 9,
+    "description": "A Hunter is one who travels the world doing all sorts of dangerous tasks. From capturing criminals to searching deep within uncharted lands for any lost treasures. Gon is a young boy whose father disappeared long ago, being a Hunter. He believes if he could also follow his father's path, he could one day reunite with him.",
+    "trailer": "https://www.youtube.com/embed/d6kBeJjTGnY",
+    "anigoSlug": "hunter-x-hunter-2011",
+    "totalEpisodes": 148,
+    "episodes": []
+  },
+  {
+    "title": "Demon Slayer: Kimetsu no Yaiba",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101922-WBsBl0ClmgYL.jpg",
+    "rating": 8,
+    "description": "It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a living, finds his family slaughtered by a demon. To make matters worse, his younger sister Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his sister back into a human, and kill the demon that massacred his family.",
+    "trailer": "https://www.youtube.com/embed/6vMuWuWlW4I",
+    "anigoSlug": "demon-slayer-kimetsu-no-yaiba",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Tokyo Ghoul",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b20605-k665mVkSug8D.jpg",
+    "rating": 8,
+    "description": "The suspense horror/dark fantasy story is set in Tokyo, which is haunted by mysterious \"ghouls\" who are devouring humans. People are gripped by the fear of these ghouls whose identities are masked in mystery. An ordinary college student named Kaneki encounters Rize, a girl who is an avid reader like him, at the café he frequents. Little does he realize that his fate will change overnight.",
+    "trailer": "https://www.youtube.com/embed/XfQUjYsVBrE",
+    "anigoSlug": "tokyo-ghoul",
+    "totalEpisodes": 12,
+    "episodes": []
+  },
+  {
+    "title": "Sword Art Online",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11757-SxYDUzdr9rh2.jpg",
+    "rating": 7,
+    "description": "In the near future, a Virtual Reality Massive Multiplayer Online Role-Playing Game (VRMMORPG) called Sword Art Online has been released where players control their avatars with their bodies using a piece of technology called Nerve Gear. One day, players discover they cannot log out, as the game creator is holding them captive unless they reach the 100th floor of the game's tower and defeat the final boss. However, if they die in the game, they die in real life. Their struggle for survival starts",
+    "trailer": "https://www.youtube.com/embed/C8Jl_-b7ju0",
+    "anigoSlug": "sword-art-online",
+    "totalEpisodes": 25,
+    "episodes": []
+  },
+  {
+    "title": "Fairy Tail",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b6702-KI4qgSMyI8Pm.png",
+    "rating": 7,
+    "description": "Across the Fiore kingdom, wizards join guilds and make their pay by filling magical needs—but one guild has a reputation as the roughest, rowdiest, most dangerous of all: Fairy Tail!",
+    "trailer": "https://www.youtube.com/embed/mAAKPx-ndAg",
+    "anigoSlug": "fairy-tail",
+    "totalEpisodes": 175,
+    "episodes": []
+  },
+  {
+    "title": "Cowboy Bebop",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1-GCsPm7waJ4kS.png",
+    "rating": 9,
+    "description": "Enter a world in the distant future, where Bounty Hunters roam the solar system. Spike and Jet, bounty hunting partners, set out on journeys in an ever struggling effort to win bounty rewards to survive.",
+    "trailer": "https://www.youtube.com/embed/OhNwckCLzis",
+    "anigoSlug": "cowboy-bebop",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Neon Genesis Evangelion",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx30-AI1zr74Dh4ye.jpg",
+    "rating": 8,
+    "description": "In the year 2015, the Angels, huge, tremendously powerful, alien war machines, appear in Tokyo for the second time. The only hope for Mankind's survival lies in the Evangelion, a humanoid fighting machine developed by NERV, a special United Nations agency. Capable of withstanding anything the Angels can dish out, the Evangelion's one drawback lies in the limited number of people able to pilot them. Only a handful of teenagers, all born fourteen years ago, nine months after the Angels first appea",
+    "trailer": "https://www.youtube.com/embed/kOH2_8MkgZY",
+    "anigoSlug": "neon-genesis-evangelion",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Code Geass: Lelouch of the Rebellion",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1575-hsmWM2ydNm1m.jpg",
+    "rating": 9,
+    "description": "On August 10th of the year 2010 the Holy Empire of Britannia began a campaign of conquest, its sights set on Japan. Operations were completed in one month thanks to Britannia's deployment of new mobile humanoid armor vehicles dubbed Knightmare Frames. Japan's rights and identity were stripped away, the once proud nation now referred to as Area 11. Its citizens, Elevens, are forced to scratch out a living while the Britannian aristocracy lives comfortably within their settlements. Pockets of resi",
+    "trailer": "https://www.youtube.com/embed/Ab9ztHX-DVg",
+    "anigoSlug": "code-geass-lelouch-of-the-rebellion",
+    "totalEpisodes": 25,
+    "episodes": []
+  },
+  {
+    "title": "Steins;Gate",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9253-tIUXF2gfU8Sg.jpg",
+    "rating": 9,
+    "description": "Self-proclaimed mad scientist Okabe Rintarou lives in a small room in Akihabara, where he invents \"future gadgets\" with fellow lab members Shiina Mayuri, his air-headed childhood friend, and Hashida Itaru, an otaku hacker. The three pass the time by tinkering with their latest creation, a \"Phone Microwave\" that can be controlled through text messages. ",
+    "trailer": "https://www.youtube.com/embed/27OZc-ku6is",
+    "anigoSlug": "steins-gate",
+    "totalEpisodes": 24,
+    "episodes": []
+  },
+  {
+    "title": "Fullmetal Alchemist",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx121-zjmixZ428Mwv.png",
+    "rating": 8,
+    "description": "The rules of alchemy state that to gain something, one must lose something of equal value. Alchemy is the process of taking apart and reconstructing an object into a different entity, with the rules of alchemy to govern this procedure. However, there exists an object that can bring any alchemist above these rules, the object known as the Philosopher's Stone. The young Edward Elric is a particularly talented alchemist who through an accident years back lost his younger brother Alphonse and one of",
+    "trailer": "https://www.youtube.com/embed/35cs5zFr2h8",
+    "anigoSlug": "fullmetal-alchemist",
+    "totalEpisodes": 51,
+    "episodes": []
+  },
+  {
+    "title": "Vinland Saga",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101348-2fhDFPCuMNiz.jpg",
+    "rating": 9,
+    "description": "Thorfinn is son to one of the Vikings' greatest warriors, but when his father is killed in battle by the mercenary leader Askeladd, he swears to have his revenge. Thorfinn joins Askeladd's band in order to challenge him to a duel, and ends up caught in the middle of a war for the crown of England.",
+    "trailer": "https://www.youtube.com/embed/5xqEp7R9SYM",
+    "anigoSlug": "vinland-saga",
+    "totalEpisodes": 24,
+    "episodes": []
+  },
+  {
+    "title": "Mob Psycho 100",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21507-6YUSbh2m0N1p.jpg",
+    "rating": 8,
+    "description": "The story revolves around \"Mob,\" a boy who will explode if his emotional capacity reaches 100%. This boy with psychic powers earned his nickname \"Mob\" because he does not stand out among other people. He keeps his psychic powers bottled up so he can live normally, but if his emotional level reaches 100, something will overwhelm his entire body.",
+    "trailer": "https://www.youtube.com/embed/mV39saBlBLI",
+    "anigoSlug": "mob-psycho-100",
+    "totalEpisodes": 12,
+    "episodes": []
+  },
+  {
+    "title": "ERASED",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21234-XmqW39aQ9o7O.jpg",
+    "rating": 8,
+    "description": "Satoru Fujinuma is a 29 year old manga artist struggling to make a name for himself following his debut. But, that was not the only thing in his life that Satoru was feeling frustrated about… He has a unique supernatural ability of being forced to prevent deaths and catastrophes by being sent back in time before the incident occurred, repeating time until the accident is prevented. One day, he gets involved in an accident that has him framed as a murderer. Desperate to save the victim, he sends ",
+    "trailer": "https://www.youtube.com/embed/TZzMOC-4k6M",
+    "anigoSlug": "erased",
+    "totalEpisodes": 12,
+    "episodes": []
+  },
+  {
+    "title": "Violet Evergarden",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21827-ubzq619ZA2E9.png",
+    "rating": 9,
+    "description": "A certain point in time, in the continent of Telesis. The great war which divided the continent into North and South has ended after four years, and the people are welcoming a new generation. Violet Evergarden, a young girl formerly known as “the weapon”, has left the battlefield to start a new life at CH Postal Service. There, she is deeply moved by the work of “Auto Memories Dolls”, who carry people's thoughts and convert them into words. Violet begins her journey as an Auto Memories Doll, and",
+    "trailer": "https://www.youtube.com/embed/_grmduuECm4",
+    "anigoSlug": "violet-evergarden",
+    "totalEpisodes": 13,
+    "episodes": []
+  },
+  {
+    "title": "HAIKYU!!",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20464-ooZUyBe4ptp9.png",
+    "rating": 8,
+    "description": "Inspired after watching a volleyball ace nicknamed \"Little Giant\" in action, small-statured Shouyou Hinata revives the volleyball club at his middle school. The newly-formed team even makes it to a tournament; however, their first match turns out to be their last when they are brutally squashed by the \"King of the Court,\" Tobio Kageyama. Hinata vows to surpass Kageyama, and so after graduating from middle school, he joins Karasuno High School's volleyball team—only to find that his sworn rival, ",
+    "trailer": "https://www.youtube.com/embed/9kLRkH9zC5k",
+    "anigoSlug": "haikyu",
+    "totalEpisodes": 25,
+    "episodes": []
+  },
+  {
+    "title": "Kuroko's Basketball",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11771-uvr44RAwRxPw.jpg",
+    "rating": 8,
+    "description": "Teikou Junior High School's basketball team is crowned champion three years in a row thanks to five outstanding players who, with their breathtaking and unique skills, leave opponents in despair and fans in admiration. However, after graduating, these teammates, known as \"The Generation of Miracles\", go their separate ways and now consider each other as rivals.",
+    "trailer": "https://www.youtube.com/embed/FTUIs_SuQfw",
+    "anigoSlug": "kuroko-s-basketball",
+    "totalEpisodes": 25,
+    "episodes": []
+  },
+  {
+    "title": "Assassination Classroom",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20755-dWrhs569YGUO.jpg",
+    "rating": 8,
+    "description": "The students of class 3-E have a mission: kill their teacher before graduation. He has already destroyed the moon, and has promised to destroy the Earth if he can not be killed within a year. But how can this class of misfits kill a tentacled monster, capable of reaching Mach 20 speed, who may be the best teacher any of them have ever had?",
+    "trailer": "https://www.youtube.com/embed/vAuTJFzjNLs",
+    "anigoSlug": "assassination-classroom",
+    "totalEpisodes": 22,
+    "episodes": []
+  },
+  {
+    "title": "The Promised Neverland",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101759-8UR7r9MNVpz2.jpg",
+    "rating": 8,
+    "description": "Emma, Norman and Ray are the brightest kids at the Grace Field House orphanage. And under the care of the woman they refer to as “Mom,” all the kids have enjoyed a comfortable life. Good food, clean clothes and the perfect environment to learn—what more could an orphan ask for? One day, though, Emma and Norman uncover the dark truth of the outside world they are forbidden from seeing.",
+    "trailer": "https://www.youtube.com/embed/ApLudqucq-s",
+    "anigoSlug": "the-promised-neverland",
+    "totalEpisodes": 12,
+    "episodes": []
+  },
+  {
+    "title": "Re:ZERO -Starting Life in Another World-",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21355-wRVUrGxpvIQQ.jpg",
+    "rating": 8,
+    "description": "In the story, Subaru Natsuki is an ordinary high school student who is lost in an alternate world, where he is rescued by a beautiful, silver-haired girl. He stays near her to return the favor, but the destiny she is burdened with is more than Subaru can imagine. Enemies attack one by one, and both of them are killed. He then finds out he has the power to rewind death, back to the time he first came to this world. But only he remembers what has happened since.",
+    "trailer": "https://www.youtube.com/embed/vFfXjuVA1Jk",
+    "anigoSlug": "re-zero-starting-life-in-another-world",
+    "totalEpisodes": 25,
+    "episodes": []
+  },
+  {
+    "title": "Overlord",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20832-vUNm5zrYWifc.jpg",
+    "rating": 8,
+    "description": "The story takes place in the year 2138 when virtual reality gaming is booming. Yggdrasil, a popular online game is quietly shut down one day. However, the protagonist Momonga decides to not log out. Momonga is then transformed into the image of a skeleton as \"the most powerful wizard.\" The world continues to change, with non-player characters (NPCs) beginning to feel emotion. Having no parents, friends, or place in society, this ordinary young man Momonga then strives to take over the new world ",
+    "trailer": "https://www.youtube.com/embed/RuNAPPcjDr4",
+    "anigoSlug": "overlord",
+    "totalEpisodes": 13,
+    "episodes": []
+  },
+  {
+    "title": "KONOSUBA -God's blessing on this wonderful world!",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21202-mPOr80AEjUcZ.png",
+    "rating": 8,
+    "description": "Kazuma Satou decides that today is the day to get out of the house for a bit. Since he dies, pointlessly, it's clearly a bad choice. The goddess who greets him in the afterlife, however, offers him a chance to be reborn in a world not unlike that of a video game, and as a bonus she'll even throw in a cool item or power! Can't possibly be a bad choice, right? Except he arrives with no money at all, dead average skills, and his \"bonus\" isn't useful at all--since he picked the goddess, Aqua, hersel",
+    "trailer": "https://www.youtube.com/embed/NU87y-38glA",
+    "anigoSlug": "konosuba-god-s-blessing-on-this-wonderful-world",
+    "totalEpisodes": 10,
+    "episodes": []
+  },
+  {
+    "title": "That Time I Got Reincarnated as a Slime",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101280-tDxCVJm714nt.jpg",
+    "rating": 8,
+    "description": "Lonely thirty-seven-year-old Satoru Mikami is stuck in a dead-end job, unhappy with his mundane life, but after dying at the hands of a robber, he awakens to a fresh start in a fantasy realm...as a slime monster! As he acclimates to his goopy new existence, his exploits with the other monsters set off a chain of events that will change his new world forever!",
+    "trailer": "https://www.youtube.com/embed/QsS7AzXCwKA",
+    "anigoSlug": "that-time-i-got-reincarnated-as-a-slime",
+    "totalEpisodes": 24,
+    "episodes": []
+  },
+  {
+    "title": "No Game, No Life",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b19815-sEOQ9yQaPKlk.jpg",
+    "rating": 8,
+    "description": "Bored with life and considering the real world to be just a “crappy game,” savvy sibling shut-ins Sora and Shiro have withdrawn into their own fantasy world filled with video games. ",
+    "trailer": "https://www.youtube.com/embed/TqMCYf1FibU",
+    "anigoSlug": "no-game-no-life",
+    "totalEpisodes": 12,
+    "episodes": []
+  },
+  {
+    "title": "Made in Abyss",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97986-TQ7dCgbS3y5s.jpg",
+    "rating": 8,
+    "description": "The \"Abyss\" is the last unexplored place in the world. Strange and wonderful creatures roam within, and it is full of precious relics that present humans can't recreate. Those that dare to explore the depths are known as \"Cave Raiders.\" An orphan girl named Riko lives on the rim. Her dream is to become a Cave Raider like her mother and solve the mysteries of the cave system. One day, Riko starts exploring the caves and discovers a robot who resembles a human boy.",
+    "trailer": "https://www.youtube.com/embed/AQbaZeby2zA",
+    "anigoSlug": "made-in-abyss",
+    "totalEpisodes": 13,
+    "episodes": []
+  },
+  {
+    "title": "The Seven Deadly Sins",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20789-Ma5ouSYPkru9.jpg",
+    "rating": 7,
+    "description": "When they were accused of trying to overthrow the monarchy, the feared warriors the Seven Deadly Sins were sent into exile. Princess Elizabeth discovers the truth - the Sins were framed by the king's guard, the Holy Knights - too late to prevent them from assassinating her father and seizing the throne!",
+    "trailer": "https://www.youtube.com/embed/wxcvbL6o55M",
+    "anigoSlug": "the-seven-deadly-sins",
+    "totalEpisodes": 24,
+    "episodes": []
+  },
+  {
+    "title": "Parasyte -the maxim-",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20623-dUARfggnNDOe.jpg",
+    "rating": 8,
+    "description": "They arrive in silence and darkness. They descend from the skies. They have a hunger for human flesh. They are everywhere. They are parasites, alien creatures who must invade–and take control of–a human host to survive. And once they have infected their victims, they can assume any deadly form they choose: monsters with giant teeth, winged demons, creatures with blades for hands. But most have chosen to conceal their lethal purpose behind ordinary human faces. So no one knows their secret–except",
+    "trailer": "https://www.youtube.com/embed/2ilVWE9uw88",
+    "anigoSlug": "parasyte-the-maxim",
+    "totalEpisodes": 24,
+    "episodes": []
+  },
+  {
+    "title": "Tokyo Revengers",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx120120-cWDmnmeEntSe.jpg",
+    "rating": 8,
+    "description": "Takemichi Hanagaki is a freelancer that's reached the absolute pits of despair in his life. He finds out that the only girlfriend he ever had in his life that he dated in middle school, Hinata Tachibana, had been killed by the ruthless Tokyo Manji Gang.",
+    "trailer": "https://www.youtube.com/embed/nYQUVwwD-H4",
+    "anigoSlug": "tokyo-revengers",
+    "totalEpisodes": 24,
+    "episodes": []
+  },
+  {
+    "title": "JoJo's Bizarre Adventure",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx666-kYzXvKlUbeMP.jpg",
+    "rating": 7,
+    "description": "Kujo Jotaro is a normal, popular Japanese high-schooler, until he thinks that he is possessed by a spirit, and locks himself in prison. After seeing his grandfather, Joseph Joestar, and fighting Joseph's friend Muhammad Abdul, Jotaro learns that the \"Spirit\" is actually Star Platinum, his Stand, or fighting energy given a semi-solid form. Later, his mother gains a Stand, and becomes sick. Jotaro learns that it is because the vampire Dio Brando has been revived 100 years after his defeat to Jonat",
+    "trailer": "",
+    "anigoSlug": "jojo-s-bizarre-adventure",
+    "totalEpisodes": 6,
+    "episodes": []
+  },
+  {
+    "title": "Princess Mononoke",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx164-ySuGzCWVw2cL.jpg",
+    "rating": 9,
+    "description": "A calm village residing in the mountains comes under attack from a demon-possessed boar one day.",
+    "trailer": "https://www.youtube.com/embed/4OiMOHRDs14",
+    "anigoSlug": "princess-mononoke",
+    "totalEpisodes": 1,
+    "episodes": []
+  },
+  {
+    "title": "Suntory Minami Alps no Tennen Mizu",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/97962-3rBcawJt63sG.jpg",
+    "rating": 6,
+    "description": "Collaboration commercials with Suntory and Kimi no Na wa..",
+    "trailer": "",
+    "anigoSlug": "suntory-minami-alps-no-tennen-mizu",
+    "totalEpisodes": 3,
+    "episodes": []
+  },
+  {
+    "title": "A Silent Voice",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20954-sYRfE5jQRtSB.jpg",
+    "rating": 9,
+    "description": "After transferring into a new school, a deaf girl, Shouko Nishimiya, is bullied by the popular Shouya Ishida. As Shouya continues to bully Shouko, the class turns its back on him. Shouko transfers and Shouya grows up as an outcast. Alone and depressed, the regretful Shouya finds Shouko to make amends.",
+    "trailer": "https://www.youtube.com/embed/Sy4bPCuzfiQ",
+    "anigoSlug": "a-silent-voice",
+    "totalEpisodes": 1,
+    "episodes": []
+  },
+  {
+    "title": "Weathering With You",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx106286-5COcpd0J9VbL.png",
+    "rating": 8,
+    "description": "High school student Hodaka leaves his home on an isolated island and moves to Tokyo, but he immediately becomes broke. He lives his days in isolation, but finally finds a job as a writer for a shady occult magazine. After he starts his job, the weather has been rainy day after day. In a corner of the crowded and busy city, Hodaka meets a young woman named Hina. Due to certain circumstances, Hina and her younger brother live together, but have a cheerful and sturdy life. Hina also has a certain p",
+    "trailer": "https://www.youtube.com/embed/Q6iK6DjV_iE",
+    "anigoSlug": "weathering-with-you",
+    "totalEpisodes": 1,
+    "episodes": []
+  },
+  {
+    "title": "Grave of the Fireflies",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx578-vU6XcOlb1XFU.jpg",
+    "rating": 8,
+    "description": "In the aftermath of a World War II bombing, two orphaned children struggle to survive in the Japanese countryside. To Seita and his four-year-old sister, the helplessness and indifference of their countrymen is even more painful than the enemy raids. Through desperation, hunger and grief, these children's lives are as heartbreakingly fragile as their spirit and love is inspiring.",
+    "trailer": "https://www.youtube.com/embed/4vPeTSRd580",
+    "anigoSlug": "grave-of-the-fireflies",
+    "totalEpisodes": 1,
+    "episodes": []
+  },
+  {
+    "title": "Howl‘s Moving Castle",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx431-o8Lj3XkjHm2k.jpg",
+    "rating": 9,
+    "description": "Sophie, a quiet girl working in a hat shop, finds her life thrown into turmoil when she is literally swept off her feet by a handsome but mysterious wizard named Howl. The vain and vengeful Witch of the Waste, jealous of their friendship, puts a spell on Sophie. In a life-changing adventure, Sophie climbs aboard Howl's magnificent flying castle and enters a magical world on a quest to break the spell. \r",
+    "trailer": "https://www.youtube.com/embed/iwROgK94zcM",
+    "anigoSlug": "howl-s-moving-castle",
+    "totalEpisodes": 1,
+    "episodes": []
+  },
+  {
+    "title": "Perfect Blue",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx437-69NMlXKFeuse.jpg",
+    "rating": 9,
+    "description": "Rising pop star Mima has quit singing to pursue a career as an actress and model, but her fans aren’t ready to see her go... Encouraged by her managers, Mima takes on a recurring role on a popular TV show, when suddenly her handlers and collaborators begin turning up murdered. Harboring feelings of guilt and haunted by visions of her former self, Mima’s reality and fantasy meld into a frenzied paranoia. As her stalker closes in, in person and online, the threat he poses is more real than even Mi",
+    "trailer": "https://www.youtube.com/embed/UXQraSkOOGs",
+    "anigoSlug": "perfect-blue",
+    "totalEpisodes": 1,
+    "episodes": []
+  },
+  {
+    "title": "Paprika",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b1943-jMCEYL1Ixmgc.png",
+    "rating": 8,
+    "description": "Prepare to enter the realm of fantasy and imagination where reality and dreams collide in a kaleidoscopic mindscape of sheer visual genius. The magical tale centers on a revolutionary machine that allows scientists to enter and record a subject's dream. After being stolen, a fearless detective and brilliant therapist join forces to recover the device before it falls into the hands of a dream terrorist.",
+    "trailer": "https://www.youtube.com/embed/JRwJdwTRfIA",
+    "anigoSlug": "paprika",
+    "totalEpisodes": 1,
+    "episodes": []
+  },
+  {
+    "title": "Toradora!",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx4224-PXVMBLNwy2aF.jpg",
+    "rating": 8,
+    "description": "Ryuuji Takasu is a gentle high school student with a love for housework; but in contrast to his kind nature, he has an intimidating face that often gets him labeled as a delinquent. On the other hand is Taiga Aisaka, a small, doll-like student, who is anything but a cute and fragile girl. Equipped with a wooden katana and feisty personality, Taiga is known throughout the school as the \"Palmtop Tiger.\"",
+    "trailer": "https://www.youtube.com/embed/ya570uUgQNc",
+    "anigoSlug": "toradora",
+    "totalEpisodes": 25,
+    "episodes": []
+  },
+  {
+    "title": "Clannad",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx2167-pSDBcyc0vjej.jpg",
+    "rating": 8,
+    "description": "Tomoya is a bitter, third year high school student. His mother passed away, causing his father to resort to alcohol and gambling. Tomoya is distant with his father and has become a delinquent in the years since his mother's death. Walking to school, he meets Nagisa Furukawa who is a year older but is repeating the grade due to illness. She is alone, as most of her friends have moved on. The two begin hanging out, and as time goes by, Tomoya finds his life shifting in a new direction.",
+    "trailer": "https://www.youtube.com/embed/9ZseZTshl2k",
+    "anigoSlug": "clannad",
+    "totalEpisodes": 23,
+    "episodes": []
+  },
+  {
+    "title": "Angel Beats!",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx6547-SYexAn5aFyss.png",
+    "rating": 8,
+    "description": "Otonashi wakes up in the afterlife to find out he has no memories of his life before death. Desperate to survive in a war that could yield another unfortunate fate, he joins the SSS in the battle against Angel, whose very mission is to destroy all inhabitants of this afterlife. As Otonashi struggles to recover his memory and learn more about this world, he finds that not all is as it had seemed.",
+    "trailer": "",
+    "anigoSlug": "angel-beats",
+    "totalEpisodes": 13,
+    "episodes": []
+  },
+  {
+    "title": "Anohana: The Flower We Saw That Day",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9989-hImMg6kCMm6I.jpg",
+    "rating": 8,
+    "description": "Jinta Yadomi and his group of childhood friends have become estranged after a tragic accident split them apart. Now in their high school years, a sudden surprise forces each of them to confront their guilt over what happened that day and come to terms with the ghosts of their past. ",
+    "trailer": "https://www.youtube.com/embed/oDWkt8wcYh8",
+    "anigoSlug": "anohana-the-flower-we-saw-that-day",
+    "totalEpisodes": 11,
+    "episodes": []
+  },
+  {
+    "title": "K-ON!",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5680-r3AI3Cwfv0Aq.png",
+    "rating": 8,
+    "description": "Hirasawa Yui, a young, carefree girl entering high school, has her imagination instantly captured when she sees a poster advertising the ‘Light Music Club’. Being the carefree girl that she is, she quickly signs up. However, Yui has a problem, she is unable to play an instrument.",
+    "trailer": "https://www.youtube.com/embed/mFHue76hqt0",
+    "anigoSlug": "k-on",
+    "totalEpisodes": 13,
+    "episodes": []
+  },
+  {
+    "title": "Lucky☆Star",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1887-P36Pucd4qKji.png",
+    "rating": 8,
+    "description": "What’s the best way to eat dessert? Do twins really have a psychic connection? What kind of guys are into moe girls? These are the kinds of questions that float through the inquisitive mind of anime super-fan Konata Izumi. When she’s not lost in her favorite manga or logging hours in one of her online games, she’s debating the mysteries of the universe with the best friends a girl could ask for.",
+    "trailer": "https://www.youtube.com/embed/ZqHj70OXtgE",
+    "anigoSlug": "lucky-star",
+    "totalEpisodes": 24,
+    "episodes": []
+  },
+  {
+    "title": "Ouran High School Host Club",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx853-fiUtW8yohsSF.jpg",
+    "rating": 8,
+    "description": "Fujioka Haruhi wins a scholarship to attend Ouran Academy, a school reserved for only the most rich and prestigious. Despite what other students may think of her, she cares little for physical appearances or the fact that she is a commoner.",
+    "trailer": "https://www.youtube.com/embed/ZM8a3QYtOfA",
+    "anigoSlug": "ouran-high-school-host-club",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Fruits Basket",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx120-Z5i1sw1xboQP.jpg",
+    "rating": 8,
+    "description": "Tohru Honda is 16 year old orphaned girl who gets invited to live in the house of her classmate, the handsome boy Sohma Yuki, and his cousins, 16 year old Kyo and 27 year old Shigure. However, these young men and parts of the rest of their family (both close and distant) hold a curse; if they are hugged by the opposite gender, they transform into animals of the Chinese Zodiac. Everyday is an adventure for sweet Tohru, as she gets to know everyone in the large family better (especially Yuki and K",
+    "trailer": "",
+    "anigoSlug": "fruits-basket",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "InuYasha",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx249-jVBkyLnBvnRE.png",
+    "rating": 8,
+    "description": "Kagome Higurashi, an average ninth grader, gets pulled into an ancient well by a demon, bringing her 500 years in the past to the feudal era. There, she meets Inuyasha, a half-demon who seeks the Shikon Jewel to make himself a full-fledged demon. With Inuyasha and new friends, Kagome's search for the Jewel of Four Souls begins...",
+    "trailer": "https://www.youtube.com/embed/UCFBsLagBPk",
+    "anigoSlug": "inuyasha",
+    "totalEpisodes": 167,
+    "episodes": []
+  },
+  {
+    "title": "Rurouni Kenshin",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx45-DEFgZRCxiGmF.png",
+    "rating": 8,
+    "description": "Himura Kenshin is a vagabond with a dark past and sunny disposition. Not a ronin but a rurouni, he was never a samurai, but an assassin of utmost skill in the Meiji restoration, who in the turning point of the war simply walked away. His travels lead him to Tokyo in the 11th year of the Meiji era, where he befriends a female Kendo master, a former thief, a brawler and a doctor all with their own secrets. Together they fight off the enemies surfacing from the dark past that Kenshin cannot escape.",
+    "trailer": "",
+    "anigoSlug": "rurouni-kenshin",
+    "totalEpisodes": 94,
+    "episodes": []
+  },
+  {
+    "title": "Yu Yu Hakusho: Ghostfiles",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx392-z90299zIvYmx.png",
+    "rating": 8,
+    "description": "Urameshi Yusuke, 14 years of age, is about as troublesome and violent as teenagers come. He is constantly ditching school, causing trouble, and getting into numerous fights everyday. One day however, he does the unexpected, sacrificing himself to save a young child. Such an action, was never ever expected, especially coming from someone as troublesome as Urameshi Yusuke. The afterlife is not prepared for Yusuke, as they never thought he would make such a sacrifice. Nowhere to go, and dead, Yusuk",
+    "trailer": "https://www.youtube.com/embed/UuRNnGmwVc4",
+    "anigoSlug": "yu-yu-hakusho-ghostfiles",
+    "totalEpisodes": 112,
+    "episodes": []
+  },
+  {
+    "title": "Gintama",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx918-iOaeBVUn4uK7.jpg",
+    "rating": 9,
+    "description": "Life isn't easy in feudal Japan... especially since the aliens landed and conquered everything! Oh sure, the new health care is great, but the public ban on the use of swords has left a lot of defeated samurai with a difficult decision to make concerning their future career paths! This is especially true if, as in the case of Gintoki Sakata, they're not particularly inclined towards holding a day job, which is why Gintoki's opted for the freelance route, taking any job that's offered to him as l",
+    "trailer": "",
+    "anigoSlug": "gintama",
+    "totalEpisodes": 201,
+    "episodes": []
+  },
+  {
+    "title": "Slam Dunk",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx170-cmD8A0vZsp6g.jpg",
+    "rating": 8,
+    "description": "Hanamichi Sakuragi, an entering Shohoku high school freshman holds a record for being rejected by 50 girls during middle school. His nearly 2 meters height and bright red hair causes most students to write him off as a delinquent. ",
+    "trailer": "",
+    "anigoSlug": "slam-dunk",
+    "totalEpisodes": 101,
+    "episodes": []
+  },
+  {
+    "title": "Captain Tsubasa",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b2116-ajWg3wcwvb2q.jpg",
+    "rating": 7,
+    "description": "Tsubasa Ozora moves to the town Nankatsu to increase his skills as a soccer player. He is challenged by the Super Goalkeeper Genzo Wakabayashi. He then agree to compete and see who was the best soccer player there.",
+    "trailer": "",
+    "anigoSlug": "captain-tsubasa",
+    "totalEpisodes": 128,
+    "episodes": []
+  },
+  {
+    "title": "Initial D 1st Stage",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b185-GvXiR8AKTmdn.jpg",
+    "rating": 8,
+    "description": "High school student Takumi Fujiwara works as a gas station attendant during the day and a delivery boy for his father's tofu shop early in the morning. Little does he know that his precise driving skills and his father's modified Toyota Sprinter AE86 Trueno make him the best amateur road racer on Mt. Akina's highway. Because of this, racing groups from all over the Gunma prefecture issue challenges to Takumi to see if he really has what it takes to be a road legend.",
+    "trailer": "https://www.youtube.com/embed/sQArIPVsz78",
+    "anigoSlug": "initial-d-1st-stage",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "GTO: Great Teacher Onizuka",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx245-NcQAyTipUMeO.jpg",
+    "rating": 8,
+    "description": "Onizuka is a reformed biker gang leader who has his sights set on an honorable new ambition: to become the world's greatest teacher... for the purpose of meeting sexy high school girls. Okay, so he's mostly reformed.",
+    "trailer": "",
+    "anigoSlug": "gto-great-teacher-onizuka",
+    "totalEpisodes": 43,
+    "episodes": []
+  },
+  {
+    "title": "School Rumble",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx24-FY8Y08LrROKE.png",
+    "rating": 8,
+    "description": "Tsukamoto Tenma is an ordinary 2nd year high school student who has fallen in love with one of her classmates, Karasuma Ooji. However, currently she is unable to confess her feelings to him. To make things worse, she found out that Karasuma is transferring to another school in a year. On the other hand, Tenma's other classmate, Harima Kenji (who is a delinquent) is also in love with Tenma. Not being able to confess his feelings, Harima gets depressed day by day.",
+    "trailer": "",
+    "anigoSlug": "school-rumble",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Nichijou - My Ordinary Life",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx10165-tw8Cz7K9tfVJ.png",
+    "rating": 8,
+    "description": "Nichijou primarily focuses on the daily antics of a trio of childhood friends—high school girls Mio Naganohara, Yuuko Aioi and Mai Minakami—whose stories soon intertwine with the young genius Hakase Shinonome, her robot caretaker Nano, and their talking cat Sakamoto. With every passing day, the lives of these six, as well as of the many people around them, experience both the calms of normal life and the insanity of the absurd. Walking to school, being bitten by a talking crow, spending time wit",
+    "trailer": "https://www.youtube.com/embed/CD6VdVDVDXI",
+    "anigoSlug": "nichijou-my-ordinary-life",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Mushoku Tensei: Jobless Reincarnation",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx108465-1ANspF1EWyFx.jpg",
+    "rating": 8,
+    "description": "When a 34-year-old underachiever gets run over by a bus, his story doesn’t end there. Reincarnated in a new world as an infant, Rudeus will seize every opportunity to live the life he’s always wanted. Armed with new friends, some freshly acquired magical abilities, and the courage to do the things he’s always dreamed of, he’s embarking on an epic adventure—with all of his past experience intact!",
+    "trailer": "https://www.youtube.com/embed/JoS7Z8MCD6E",
+    "anigoSlug": "mushoku-tensei-jobless-reincarnation",
+    "totalEpisodes": 11,
+    "episodes": []
+  },
+  {
+    "title": "The Rising of the Shield Hero",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx99263-LcazQwdlWzMy.jpg",
+    "rating": 8,
+    "description": "Naofumi Iwatani, an uncharismatic Otaku who spends his days on games and manga, suddenly finds himself summoned to a parallel universe! He discovers he is one of four heroes equipped with legendary weapons and tasked with saving the world from its prophesied destruction. As the Shield Hero, the weakest of the heroes, all is not as it seems. Naofumi is soon alone, penniless, and betrayed. With no one to turn to, and nowhere to run, he is left with only his shield. Now, Naofumi must rise to become",
+    "trailer": "https://www.youtube.com/embed/VKYmpq-V3Rs",
+    "anigoSlug": "the-rising-of-the-shield-hero",
+    "totalEpisodes": 25,
+    "episodes": []
+  },
+  {
+    "title": "Log Horizon",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx17265-RyErURYesjJt.jpg",
+    "rating": 8,
+    "description": "The online fantasy game Elder Tales is a worldwide phenomenon, immersing millions of players in its intricately conceived virtual world. However, the release of the game's twelfth expansion pack makes that immersion all too literal, as players from around the world are suddenly pulled into the game's no-longer-fictional universe! Now, eight-year ET veteran Shiroe, his friend Naotsugu, the beautiful assassin Akatsuki, and 30,000 other players are faced with the daunting task of learning how to de",
+    "trailer": "https://www.youtube.com/embed/IG1VhJ75r8k",
+    "anigoSlug": "log-horizon",
+    "totalEpisodes": 25,
+    "episodes": []
+  },
+  {
+    "title": "Sword Art Online: Alicization",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx100182-KctPmCJ2smHQ.jpg",
+    "rating": 8,
+    "description": "Kirito awakens in a vast, fantastical forest filled with towering trees. In his search for clues to the truth of his surroundings, he encounters a young boy who seems to know him. He ought to be a simple NPC, but the depth of his emotions seem no different than a human. As they search for the boy's parents, Kirito finds a peculiar memory returning to him. A memory from his own childhood, of this boy and a girl, too, with golden hair, and a name he should have never forgotten - Alice.",
+    "trailer": "https://www.youtube.com/embed/wHaHh_sX1IM",
+    "anigoSlug": "sword-art-online-alicization",
+    "totalEpisodes": 24,
+    "episodes": []
+  },
+  {
+    "title": "Devilman Crybaby",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx98460-bLtH2c3jd6sV.png",
+    "rating": 8,
+    "description": "The protagonist Akira Fudou learns from his best friend, Ryou Asuka, that an ancient race of demons has returned to take back the world from humans. Ryou tells Akira that the only way to defeat the demons is to incorporate their supernatural powers, and suggests that he unite with a demon himself. Akira succeeds in transforming into Devilman, who possesses both the powers of a demon and the soul of a human. The battle of Devilman and Akira Fudou begins.",
+    "trailer": "https://www.youtube.com/embed/g4LjvxtFieE",
+    "anigoSlug": "devilman-crybaby",
+    "totalEpisodes": 10,
+    "episodes": []
+  },
+  {
+    "title": "Death Parade",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx20931-bktYqOcxPERi.jpg",
+    "rating": 8,
+    "description": "When two people die at the same time, they’re sent to a place that’s neither heaven nor hell—a lavish bar between worlds where the stakes are high and the rules are simple: if you win you live again, if you die… you’re gone for good.",
+    "trailer": "https://www.youtube.com/embed/n9lr8jqI-24",
+    "anigoSlug": "death-parade",
+    "totalEpisodes": 12,
+    "episodes": []
+  },
+  {
+    "title": "MONSTER",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204541-u2uVBvLJfYmv.png",
+    "rating": 6,
+    "description": "Music video directed by RIRI Yamashita for the song MONSTER by Ninomae Inanis, Ouro Kronii, Shiori Novella and Gigi Murin. ",
+    "trailer": "https://www.youtube.com/embed/nUrITFpI85A",
+    "anigoSlug": "monster",
+    "totalEpisodes": 1,
+    "episodes": []
+  },
+  {
+    "title": "PSYCHO-PASS",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx13601-i42VFuHpqEOJ.jpg",
+    "rating": 8,
+    "description": "Justice, and the enforcement of it, has changed. In the 22nd century, Japan enforces the Sibyl System, an objective means of determining the threat level of each citizen by examining their mental state for signs of criminal intent, known as their Psycho-Pass. Inspectors uphold the law by subjugating, often with lethal force, anyone harboring the slightest ill-will; alongside them are Enforcers, jaded Inspectors that have become latent criminals, granted relative freedom in exchange for carrying ",
+    "trailer": "https://www.youtube.com/embed/b_A_wsT5WQE",
+    "anigoSlug": "psycho-pass",
+    "totalEpisodes": 22,
+    "episodes": []
+  },
+  {
+    "title": "Baccano!",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx2251-tTQoWxVy4472.jpg",
+    "rating": 8,
+    "description": "During the early 1930s in Chicago, the transcontinental train, Flying Pussyfoot, is starting its legendary journey that will leave a trail of blood all over the country. At the same time in New York, the ambitious scientist Szilard and his unwilling aide Ennis, are looking for missing bottles of the immortality elixir. In addition, a war between the mafia groups is getting worse. On board the Advena Avis, in 1711, alchemists are about to learn the price of immortality.",
+    "trailer": "https://www.youtube.com/embed/MtuNdtfMlJ0",
+    "anigoSlug": "baccano",
+    "totalEpisodes": 13,
+    "episodes": []
+  },
+  {
+    "title": "Durarara!!",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx6746-3LTwM95Uqeoa.png",
+    "rating": 8,
+    "description": "In Tokyo's downtown district of Ikebukuro, amidst many strange rumors and warnings of anonymous gangs and dangerous occupants, one urban legend stands out above the rest—the existence of a headless \"Black Rider\" who is said to be seen driving a jet-black motorcycle through the city streets.",
+    "trailer": "https://www.youtube.com/embed/q5qlX4lWst0",
+    "anigoSlug": "durarara",
+    "totalEpisodes": 24,
+    "episodes": []
+  },
+  {
+    "title": "Trigun",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx6-wd4saT1JzStH.jpg",
+    "rating": 8,
+    "description": "Vash the Stampede is a wanted man with a habit of turning entire towns into rubble. The price on his head is a fortune, and his path of destruction reaches across the arid wastelands of a desert planet. Unfortunately, most encounters with the spiky-haired gunslinger don't end well for the bounty hunters who catch up with him; someone almost always gets hurt - and it's never Vash.",
+    "trailer": "https://www.youtube.com/embed/bJVyIXeUznY",
+    "anigoSlug": "trigun",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Samurai Champloo",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx205-7tHVFu6dPBm9.png",
+    "rating": 8,
+    "description": "Let's break it down. Mugen's a reckless sword-slinger with a style that's more b-boy than Shaolin. He's got a nasty streak that makes people want to stick a knife in his throat. Then there's Jin, a deadbeat ronin who speaks softly but carries a big blade. He runs game old-school style, but he can make your blood spray with the quickness. When these roughnecks bring the ruckus, it ain't good for anybody, especially them. Enter Fuu, the ditzy waitress who springs her new friends from a deadly jam.",
+    "trailer": "",
+    "anigoSlug": "samurai-champloo",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Serial Experiments Lain",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx339-xF2wp1NQuQ4r.png",
+    "rating": 8,
+    "description": "We're all connected... There is the world around us, a world of people, tactile sensation, and culture. There is the wired world, inside the computer, of images, personalities, virtual experiences, and a culture all of its own. The day after a classmate commits suicide, Lain, a 14-year-old girl, discovers how closely the two worlds are linked when she receives an e-mail from the dead girl: I just abandoned my body. I still live here...",
+    "trailer": "https://www.youtube.com/embed/lpv7Wv-sDAo",
+    "anigoSlug": "serial-experiments-lain",
+    "totalEpisodes": 13,
+    "episodes": []
+  },
+  {
+    "title": "Elfen Lied",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx226-MibyRKhIrnTe.png",
+    "rating": 7,
+    "description": "The Diclonius, a mutated homosapien that is said to be selected by God and will eventually become the destruction of mankind, possess two horns on their heads and have a \"sixth sense\" which gives them telekinetic abilities. Due to this dangerous power, they have been captured and isolated in laboratories by the government. Lucy, a young and psychotic Diclonius, manages to break free of her confines and brutally murders most of the guards in the laboratory where she is being held, only to be shot",
+    "trailer": "https://www.youtube.com/embed/3KgeAos9oNc",
+    "anigoSlug": "elfen-lied",
+    "totalEpisodes": 13,
+    "episodes": []
+  },
+  {
+    "title": "Hellsing Ultimate",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx777-F6547pSAR2Zd.jpg",
+    "rating": 8,
+    "description": "Hellsing, a secret organization of the British government, has long been battling supernatural threats to keep the people safe from creatures of the night. The current leader, Integra Wingates Hellsing controls her own personal army to eliminate the undead beings, but even her highly trained soldiers pale in comparison to her most trusted vampire exterminator, a man by the name of Alucard, who is actually a powerful vampire himself. Along with Integra's mysterious butler and Alucard's new vampir",
+    "trailer": "https://www.youtube.com/embed/7CQKMDFAKMk",
+    "anigoSlug": "hellsing-ultimate",
+    "totalEpisodes": 10,
+    "episodes": []
+  },
+  {
+    "title": "Claymore",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1818-KieLJv0qo3mO.jpg",
+    "rating": 7,
+    "description": "A brutal scourge stalks the land. Yoma, monsters driven by a hunger satisfied by only one quarry - Humanity. The dark breed knows but a singular foe: Claymore. Human-Yoma hybrids of extraordinary strength and cunning, the Claymores roam from skirmish to skirmish delivering salvation by the edge of a blade.",
+    "trailer": "https://www.youtube.com/embed/c5DDD0ofspk",
+    "anigoSlug": "claymore",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Soul Eater",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx3588-fSMggQoFSbUI.png",
+    "rating": 8,
+    "description": "Set in the Shinigami technical school for weapon meisters, the series revolves around 3 groups of each a weapon meister and a human weapon. Trying to make the latter a \"Death Scythe\" which is the highest title for a weapon and thus fit for use by the Shinigami, they must collect the souls of 99 evil humans and 1 witch.",
+    "trailer": "https://www.youtube.com/embed/DTTCUzmHKvI",
+    "anigoSlug": "soul-eater",
+    "totalEpisodes": 51,
+    "episodes": []
+  },
+  {
+    "title": "D.Gray-man",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1482-6jc8ZVSmHuLo.jpg",
+    "rating": 8,
+    "description": "Towards the end of the 19th century, Allen Walker officially joins the organization of Exorcists that destroy the beings known as Akuma; mechanic weapons made by the Millennium Earl with the suffering souls of the dead. Allen has both a cursed eye and an anti-Akuma weapon as an arm, bearing the power of \"Innocence\", a gift given to him as an apostle of God. Allen, along with his fellow Exorcists must put a stop to the Millennium Earl's ultimate plot that could lead to the destruction of the worl",
+    "trailer": "https://www.youtube.com/embed/mJuBki_tehg",
+    "anigoSlug": "d-gray-man",
+    "totalEpisodes": 103,
+    "episodes": []
+  },
+  {
+    "title": "Black Butler",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx4898-mW4gabZvwmLC.jpg",
+    "rating": 7,
+    "description": "In Victorian-era Europe, a young boy loses everything he once held near and dear to a vicious plot. In his moment of death, he strikes a deal with a demon: his soul, in exchange for revenge. Ciel Phantomhive is now the head of the Phantomhive corporation, handling all business affairs as well as the underground work for the Queen of England. His new partner is a demon butler, Sebastian Michaelis, whose powers as a butler is only surpassed by his strength as a demon.",
+    "trailer": "https://www.youtube.com/embed/EoipHZFNXv0",
+    "anigoSlug": "black-butler",
+    "totalEpisodes": 24,
+    "episodes": []
+  },
+  {
+    "title": "Sailor Moon",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx530-O8q6KpJ244Qk.jpg",
+    "rating": 8,
+    "description": "Usagi Tsukino is an average student and crybaby klutz who constantly scores low on her tests. Unexpectedly, her humdrum life is turned upside down when she saves a cat with a crescent moon on its head from danger. The cat, named Luna, later reveals that their meeting was not an accident: Usagi is destined to become Sailor Moon, a planetary guardian with the power to protect the Earth. Given a special brooch that allows her to transform, she must use her new powers to save the city from evil ener",
+    "trailer": "https://www.youtube.com/embed/UL_F6L1tSAM",
+    "anigoSlug": "sailor-moon",
+    "totalEpisodes": 46,
+    "episodes": []
+  },
+  {
+    "title": "Cardcaptor Sakura",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx232-ERyKCNNPJJeh.png",
+    "rating": 8,
+    "description": "One day, Kinomoto Sakura, a 4th grader stumbles upon the mysterious book of Clow. Upon opening it and reading the name of The Windy aloud, Sakura scatters the cards to the winds. Sakura is elected and appointed by Keroberos, Guardian of the Cards to capture the remaining cards. With her friend Tomoyo and rival Syaoran, Sakura begins an adventure that will forever change her.",
+    "trailer": "https://www.youtube.com/embed/W8pQIpheFSw",
+    "anigoSlug": "cardcaptor-sakura",
+    "totalEpisodes": 70,
+    "episodes": []
+  },
+  {
+    "title": "Pokémon",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b527-t6dBVJ5OVcXK.png",
+    "rating": 7,
+    "description": "A young boy named Satoshi embarks on a journey to become a \"Pokémon Master\" with his first Pokémon, Pikachu. Joining him on his travels are Takeshi, a girl-obsessed Rock Pokemon Trainer, and Kasumi, a tomboyish Water Pokémon Trainer who may have a crush on him. Satoshi and Co. end up traveling through various regions, including Kanto, the Orange Islands, and Johto, and then enter the Pokémon League competitions there. Along the way, they run into many confrontations with Musashi, Kojirou, and Ny",
+    "trailer": "https://www.youtube.com/embed/nS0ico6na_U",
+    "anigoSlug": "pok-mon",
+    "totalEpisodes": 276,
+    "episodes": []
+  },
+  {
+    "title": "Digimon: Digital Monsters",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx552-zad0ts5hylQJ.jpg",
+    "rating": 8,
+    "description": "Seven kids are transported to the Digital World, a strange place where digital creatures called \"Digimon\" reside. A group of Digimon soon befriend them and keep the kids out of harm's way. The children then discover they are the Chosen Children, which protect the Digital World from evil Digimon like Devimon and Vamdemon.",
+    "trailer": "",
+    "anigoSlug": "digimon-digital-monsters",
+    "totalEpisodes": 54,
+    "episodes": []
+  },
+  {
+    "title": "Doraemon",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/501.jpg",
+    "rating": 7,
+    "description": "Nobita Nobi is so hapless that his 22nd century decendants are still impoverished as a result of his 20th century bumbling. In a bid to raise their social status, their servant, a robotic cat named Doraemon, decides to travel back in time and guide Nobita on the proper path to fortune. Unfortunately Doraemon, a dysfunctional robot that the familly acquired by accident (but chose to keep nonetheless), isn't much better off than Nobita. The robot leads Nobita on many adventures, and while Nobita's",
+    "trailer": "",
+    "anigoSlug": "doraemon",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Kaiji - Against All Rules",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx10271-Aep4woDDbXdU.jpg",
+    "rating": 8,
+    "description": "Several months after the events of the first season, Kaiji, with his appendages reattached and his debt now run up to 9.5 million yen, is still desperately seeking the elusive big score that will cancel all of his markers. Unbeknownst to him, Hyodo’s company, the Teiai Corporation, is actively searching for Kaiji, and have sent Kaiji’s old “friend” Endoh, who entered him in the high stakes games in the past, to find him. \r",
+    "trailer": "https://www.youtube.com/embed/EK1LiaJ-TSU",
+    "anigoSlug": "kaiji-against-all-rules",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Akudama Drive",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx116566-PPIVQt359vQY.jpg",
+    "rating": 8,
+    "description": "Many years ago, a Great Civil War ravaged Japan, leaving the country fragmented between two regions: Kansai and Kanto. In Kansai, a group of six Akudama carry out missions given to them by a mysterious black cat, while evading the police. But a dangerous journey is about to unfold when a civilian girl becomes twisted into the Akudama’s way of life and witnesses their criminal drives.",
+    "trailer": "https://www.youtube.com/embed/47QY-u0CXMo",
+    "anigoSlug": "akudama-drive",
+    "totalEpisodes": 12,
+    "episodes": []
+  },
+  {
+    "title": "BAKI",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97888-tdZ1r7qN1DRs.jpg",
+    "rating": 7,
+    "description": "The protagonist, Baki Hanma, trains with an intense focus to become strong enough to surpass his father, Yujiro Hanma, the strongest fighter in the world. Five of the world's most violent and brutal death row inmates are gathering to face Baki. Their objective is to taste defeat -- their unmatched strength and skill have led them to grow bored of life itself, and they now seek out Baki in the hopes that he can overwhelm and utterly crush them. In this crisis, other underground martial art warrio",
+    "trailer": "https://www.youtube.com/embed/ZI5sVsdU3mI",
+    "anigoSlug": "baki",
+    "totalEpisodes": 26,
+    "episodes": []
+  },
+  {
+    "title": "Vagabond",
+    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx155625-DzS5LF1tUXs0.jpg",
+    "rating": 5,
+    "description": "Music video directed by Ray Wakui for the song Hyohakusha by DUSTCELL.",
+    "trailer": "https://www.youtube.com/embed/wNvoJlJamgk",
+    "anigoSlug": "vagabond",
+    "totalEpisodes": 1,
+    "episodes": []
   }
 ]
