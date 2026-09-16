@@ -25,7 +25,7 @@ const path = require('path');
 
 const DB_PATH = path.join(__dirname, 'database.json');
 const ANILIST_URL = 'https://graphql.anilist.co';
-const DELAY_MS = 800; // AniList allows ~90 req/min; this keeps us well under that
+const DELAY_MS = 1400; // bumped up slightly — AniList throttled us at 800ms on a long run
 const MAX_RETRIES = 4;
 
 // A solid default list of ~100 iconic / famous anime, in roughly
@@ -51,12 +51,12 @@ const DEFAULT_TITLES = [
   "Initial D","Great Teacher Onizuka","School Rumble","Nichijou","Mushoku Tensei",
   "The Rising of the Shield Hero","Log Horizon","Sword Art Online: Alicization",
   "Tokyo Avengers","Blue Lock","Hell's Paradise","Solo Leveling","Frieren: Beyond Journey's End",
-  "Oshi no Ko","Kaguya-sama: Love is War","Horimiya","Classroom of the Elite","Your Turn to Die",
+  "Oshi no Ko","Kaguya-sama: Love is War","Horimiya","Classroom of the Elite","Kimi ga Shine",
   "Devilman Crybaby","Death Parade","Monster","Psycho-Pass","Baccano!","Durarara!!",
   "Trigun","Samurai Champloo","Serial Experiments Lain","Elfen Lied","Hellsing Ultimate",
   "Claymore","Soul Eater","D.Gray-man","Black Butler","The Seven Deadly Sins",
   "Sailor Moon","Cardcaptor Sakura","Pokemon","Digimon Adventure","Doraemon",
-  "Slam Dunk (2022 Movie)","Kaiji","Akudama Drive","Baki","Vagabond"
+  "The First Slam Dunk","Kaiji","Akudama Drive","Baki","Vagabond"
 ];
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
